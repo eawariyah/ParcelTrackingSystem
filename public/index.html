@@ -4,16 +4,79 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Parcel Tracker</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+
+    <style>
+      .ParcelTracker {
+        text-align: center;
+      }
+
+      .animation-box {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .progress-bar {
+        width: 40%;
+        margin-right: 20px;
+      }
+
+      .progress-bar label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .info-box {
+        flex-grow: 1;
+      }
+
+      .item-box {
+        background-color: #3d4148;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 10px;
+      }
+
+      .item-box h2 {
+        margin: 0;
+      }
+
+      /* Animation */
+      @keyframes progressAnimation {
+        from {
+          width: 0;
+        }
+      }
+
+      progress {
+        animation: progressAnimation 2s ease-in-out forwards;
+      }
+    </style>
   </head>
 
-  <body style="background: black; color: #ffffff">
-    <h1>Parcel Tracker</h1>
-    <h2>Distance is:</h2>
-    <h2 id="distanceValue"></h2>
-    <label for="progressBar">Progress:</label>
-    <progress id="progressBar" value="0" min="0" max="100">%</progress>
-    <h2 id="progressStatus"></h2>
-    <tbody id="bookList"></tbody>
+  <body>
+    <div class="ParcelContent">
+      <h1 class="ParcelTracker">Parcel Tracker</h1>
+      <div class="animation-box">
+        <div class="progress-bar">
+          <label for="progressBar">Progress:</label>
+          <progress id="progressBar" value="0" min="0" max="100">%</progress>
+        </div>
+        <div class="info-box">
+          <div class="item-box">
+            <h2 class="DistanceIs">Distance is:</h2>
+            <h2 class="DistanceValue" id="distanceValue"></h2>
+          </div>
+          <div class="item-box">
+            <h2 id="progressStatus"></h2>
+          </div>
+          <div class="item-box">
+            <h2 id="time" class="Time">~ 7 hours</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
   </body>
   <!-- <script src="../JS/index.js"></script> -->
   <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>

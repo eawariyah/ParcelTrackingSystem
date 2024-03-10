@@ -3,32 +3,397 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="../CSS/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins"
-      rel="stylesheet"
-    />
-    <link rel="icon" href="https://vipexparcel.com/favicon.ico" />
+    <title>Parcel Tracker</title>
+    <style>
+      .ParcelTracker {
+        text-align: center;
+      }
+
+      .animation-box {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .progress-bar {
+        width: 40%;
+        margin-right: 20px;
+      }
+
+      .progress-bar label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .info-box {
+        flex-grow: 1;
+      }
+
+      .item-box {
+        background-color: #3d4148;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 10px;
+      }
+
+      .item-box h2 {
+        margin: 0;
+      }
+
+      /* Animation */
+      @keyframes progressAnimation {
+        from {
+          width: 0;
+        }
+      }
+
+      progress {
+        animation: progressAnimation 2s ease-in-out forwards;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        height: 100%;
+      }
+
+      body {
+        position: relative;
+        min-height: 100%;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,
+          Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+        background: #eceff1;
+      }
+
+      h1 {
+        margin: auto;
+        text-transform: uppercase;
+        text-align: center;
+        padding-top: 30px;
+      }
+
+      .flex {
+        display: flex;
+      }
+
+      .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+        margin: auto;
+      }
+
+      .info {
+        justify-content: space-between;
+        border-bottom: 1px solid #e6e6e6;
+        padding: 10px 0;
+        text-transform: uppercase;
+        font-size: 90%;
+        margin: auto -15px 30px;
+      }
+
+      .info-code {
+        cursor: pointer;
+      }
+
+      .info-code:hover {
+        color: salmon;
+      }
+
+      .progress-wrapper {
+        max-width: 350px;
+        justify-content: space-between;
+        margin: auto;
+        padding: 20px;
+        text-transform: uppercase;
+      }
+
+      [type="range"] {
+        width: 200px;
+      }
+
+      section {
+        position: relative;
+        background-color: #fff;
+        border-radius: 7px;
+        padding: 5px 30px 30px;
+        margin: 20px;
+        width: 260px;
+        height: 306px;
+      }
+
+      .code {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        width: 260px;
+        height: 0;
+        left: 0;
+        margin: auto;
+        line-height: 1.6;
+        transition: visibility 0s, opacity 0.5s linear;
+      }
+
+      .show-code .code {
+        visibility: visible;
+        opacity: 1;
+        height: 100%;
+        top: 45px;
+      }
+
+      pre {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      code {
+        height: calc(100% - 45px);
+        margin-top: -20px;
+      }
+
+      .github {
+        position: absolute;
+        text-align: center;
+        left: 0;
+        right: 0;
+        top: 5px;
+        margin: auto;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+      }
+
+      .github a {
+        text-decoration: none;
+      }
+
+      .github a:hover {
+        border-bottom: 1px solid salmon;
+      }
+
+      [data-pie-index="2"] {
+        position: relative;
+        border-radius: 50%;
+        box-shadow: inset 0 0 25px 10px #a2caff;
+      }
+
+      [data-pie-index="16"] {
+        position: relative;
+        border-radius: 50%;
+        box-shadow: inset 0 0 25px 10px #f50057;
+      }
+
+      .heart {
+        position: absolute;
+        font-size: 2rem;
+        margin: auto;
+        width: 100%;
+        bottom: 45px;
+        text-align: center;
+        animation: heart 0.8s linear infinite;
+        text-shadow: 0px 0px 10px #f50057;
+      }
+
+      @keyframes heart {
+        0% {
+          transform: scale(1.07);
+        }
+        80% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(0.8);
+        }
+      }
+
+      .pie-unit-11 {
+        fill: #f50057;
+        font-size: 1rem;
+      }
+    </style>
   </head>
   <body>
-    <div style="display: flex; flex-direction: column">
-      <button
-        title="Search"
-        class="TrackBusButton"
-        style="margin-left: 10px; margin-bottom: 5px; width: 210px"
-        onclick="window.location.href = '../public/index.html'"
-      >
-        Track Bus
-      </button>
-      <button
-        title="Search"
-        class="TrackBusButton"
-        style="margin-left: 10px; margin-bottom: 5px; width: 210px"
-        onclick="window.location.href = '../public/index.html'"
-      >
-        Find other Parcel
-      </button>
+    <div class="ParcelContent">
+      <h1 class="ParcelTracker">Parcel Tracker</h1>
+      <div class="animation-box">
+        <div class="progress-bar">
+          <label for="progressBar">Progress:</label>
+          <progress id="progressBar" value="0" min="0" max="100">%</progress>
+        </div>
+        <div class="info-box">
+          <div class="item-box">
+            <h2 class="DistanceIs">Distance is:</h2>
+            <h2 class="DistanceValue" id="distanceValue"></h2>
+          </div>
+          <div class="item-box">
+            <h2 id="progressStatus"></h2>
+          </div>
+          <div class="item-box">
+            <h2 id="time" class="Time">~ 7 hours</h2>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="flex container">
+      <section>
+        <div class="flex info">
+          <div class="info-name">simple</div>
+          <div class="info-code">code</div>
+        </div>
+        <div
+          class="pie"
+          data-pie='{ "percent": 0, "colorSlice": "#BF360C", "colorCircle": "#f1f1f1", "fontWeight": 100 }'
+        ></div>
+        <div class="code">
+          <pre>
+          <code class="language-json">data-pie='{ 
+  "percent": 0,
+  "colorSlice": "#BF360C",
+  "colorCircle": "#f1f1f1",
+  "fontWeight": 100
+}'</code>
+        </pre>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/tomik23/circular-progress-bar@latest/docs/circularProgressBar.min.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_AUTH_DOMAIN",
+        databaseURL: "YOUR_DATABASE_URL",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_STORAGE_BUCKET",
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        appId: "YOUR_APP_ID",
+        measurementId: "YOUR_MEASUREMENT_ID",
+      };
+      firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+
+      function displayFirebaseValues() {
+        const testValuesRef = database.ref("gpsCoordinates");
+
+        testValuesRef.once("value", (snapshot) => {
+          const data = snapshot.val();
+
+          const lat1 = 5.695604; // Start
+          const lon1 = -0.247041; // Start
+
+          const lat2 = 5.761273; // Goal
+          const lon2 = -0.22054; // Goal
+
+          const currentLat = data.latitudeValue; // Current
+          const currentLon = data.longitudeValue; // Current
+
+          const R = 6371e3; // metres
+          const φ1 = (lat1 * Math.PI) / 180; // φ, λ in radians
+          const φ2 = (lat2 * Math.PI) / 180;
+          const Δφ = ((lat2 - lat1) * Math.PI) / 180;
+          const Δλ = ((lon2 - lon1) * Math.PI) / 180;
+
+          const a =
+            Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+            Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+          const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+          const distance = R * c; // in metres
+
+          document.getElementById("distanceValue").innerHTML =
+            distance.toFixed(2) + " meters";
+
+          const φ3 = (currentLat * Math.PI) / 180;
+          const φ4 = (lat2 * Math.PI) / 180;
+          const Δφ2 = ((lat2 - currentLat) * Math.PI) / 180;
+          const Δλ2 = ((lon2 - currentLon) * Math.PI) / 180;
+
+          const a2 =
+            Math.sin(Δφ2 / 2) * Math.sin(Δφ2 / 2) +
+            Math.cos(φ3) * Math.cos(φ4) * Math.sin(Δλ2 / 2) * Math.sin(Δλ2 / 2);
+          const c2 = 2 * Math.atan2(Math.sqrt(a2), Math.sqrt(1 - a2));
+
+          const currentDistance = R * c2; // in metres
+
+          const progressPercentage =
+            ((distance - currentDistance) / distance) * 100;
+          document.getElementById("progressStatus").innerHTML =
+            progressPercentage.toFixed(2) + "%";
+          document.getElementById("progressBar").value = progressPercentage;
+
+          const arrivedState = progressPercentage >= 95.0 ? true : false;
+          const arrivedStateRef = database.ref("arrivedState");
+          arrivedStateRef
+            .set(arrivedState)
+            .then(() => {
+              console.log("arrivedState updated successfully!");
+            })
+            .catch((error) => {
+              console.error("Error updating arrivedState:", error);
+            });
+
+          // Update circular progress
+          updateCircularProgress(progressPercentage);
+        });
+      }
+
+      function updateCircularProgress(distancePercentage) {
+        const options = {
+          index: 1, // Assuming only one circular progress bar
+          percent: distancePercentage,
+        };
+        circle.animationTo(options);
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const elements = [].slice.call(document.querySelectorAll(".pie"));
+        const circle = new CircularProgressBar("pie");
+
+        if ("IntersectionObserver" in window) {
+          const config = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.75,
+          };
+
+          const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting && entry.intersectionRatio > 0.75) {
+                circle.initial(entry.target);
+                observer.unobserve(entry.target);
+              }
+            });
+          }, config);
+
+          elements.forEach((item) => {
+            observer.observe(item);
+          });
+        } else {
+          elements.forEach((element) => {
+            circle.initial(element);
+          });
+        }
+
+        // Initial call to fetch and update progress
+        displayFirebaseValues();
+
+        // Schedule periodic updates (e.g., every 5 seconds)
+        setInterval(displayFirebaseValues, 5000);
+      });
+    </script>
   </body>
 </html>
