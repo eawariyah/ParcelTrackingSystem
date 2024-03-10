@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maps with Locations</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      body {
+        margin: 0;
+      }
+
+      #map {
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Define the locations
+        const locations = [
+          {
+            name: "Circle - Accra",
+            coordinates: [5.568653241193396, -0.21947105531818906],
+            address: "VIP JEOIJN Bus Terminal",
+            phone: "+233204353512",
+          },
+          {
+            name: "Anloga Junction - Kumasi",
+            coordinates: [6.687834385775917, -1.59586190816314],
+            address: "Vipex Parcels Office (Yaa Ataah Arcade)",
+            phone: "+233241234567",
+          },
+          {
+            name: "Asafo - Kumasi",
+            coordinates: [6.686133347774297, -1.6149980574363236],
+            address: "VIP JEOIJN Bus Terminal",
+            phone: "+233204353513",
+          },
+          {
+            name: "Sunyani",
+            coordinates: [7.332059682132788, -2.3201279553029983],
+            address: "VIP JEOIJN Bus Terminal",
+            phone: "+233540305280",
+          },
+        ];
+
+        // Initialize the map
+        const map = L.map("map").setView([6.3, -1.5], 7); // Centered around Ghana
+
+        // Add a tile layer (you can replace 'mapbox.streets' with your preferred tile provider)
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        // Add markers for each location
+        locations.forEach((location) => {
+          const marker = L.marker(location.coordinates).addTo(map);
+          marker.bindPopup(`
+            <strong>${location.name}</strong><br>
+            Address: ${location.address}<br>
+            Phone: ${location.phone}
+          `);
+        });
+      });
+    </script>
+  </body>
+</html>

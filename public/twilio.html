@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twilio Test</title>
+  </head>
+  <body>
+    <h1>Send Message</h1>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twilio/3.71.0/twilio.min.js"></script>
+
+    <script>
+      const accountSid = "ACcb5093f0e174aa2641296a739b522391";
+      const authToken = "e0eec57bbb4268625efc5e6f45290176";
+      const client = new Twilio(accountSid, authToken);
+
+      client.messages
+        .create({
+          body: "Hello Mate",
+          from: "+447488895821",
+          to: "+233558268006",
+        })
+        .then((message) => console.log(message.sid))
+        .catch((error) => console.error(error));
+    </script>
+  </body>
+</html>

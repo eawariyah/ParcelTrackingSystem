@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vipxparcel</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="https://vipexparcel.com/favicon.ico" />
+  </head>
+
+  <body>
+    <div class="header">
+      <a href="https://www.vipbustickets.com" title="#" class="flex"
+        ><img
+          class="VipLogo"
+          src="../Resources/download.png"
+          alt="VIP Bus Tickets image"
+      /></a>
+      <h1 class="home">Vipex Co LTD</h1>
+      <!-- <a class="Services" href="../HTML/Services.html">Services</a>
+      <a href="https://www.vipbustickets.com" title="#" class="flex"
+        ><img
+          class="ServicesArrow"
+          src="../Resources/free-arrow-down-icon-3101-2.png"
+          alt="VIP Bus Tickets image"
+      /></a> -->
+      <div class="drawer-container">
+        <button class="toggle-button" onclick="toggleDrawer()">Services</button>
+        <div class="drawer" id="drawer">
+          <ul>
+            <li><a href="../public/index.html">Track Bus</a></li>
+            <li><a href="./FindParcel.html">Find other parcel</a></li>
+            <li><a href="./PickUpLocations.html">Pick Up Locations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="SubHeading">
+      <h2>Track Your Parcel</h2>
+    </div>
+
+    <div class="stepper-wrapper">
+      <div class="stepper-item completed">
+        <div class="step-counter">1</div>
+        <div class="step-name">Approved</div>
+      </div>
+      <div class="stepper-item completed">
+        <div class="step-counter">2</div>
+        <div class="step-name">Processed</div>
+      </div>
+      <div class="stepper-item completed">
+        <div class="step-counter">3</div>
+        <div class="step-name">Confirmed</div>
+      </div>
+      <div class="stepper-item active">
+        <div class="step-counter">4</div>
+        <div class="step-name">Transit</div>
+      </div>
+      <div class="stepper-item">
+        <div class="step-counter">5</div>
+        <div class="step-name">Arrived</div>
+      </div>
+    </div>
+
+    <!-- <h2>Distance is:</h2>
+    <h2 class="distanceValue"></h2>
+    <label for="progressBar">Progress:</label>
+    <progress class="progressBar" value="0" min="0" max="100">%</progress>
+    <h2 class="progressStatus"></h2>
+    <tbody class="bookList"></tbody> -->
+
+    <div class="ParcelContent">
+      <h1 class="ProgressBanner">Progress: In Transit!</h1>
+      <hr style="margin: 5%" />
+      <div class="ChitCode">
+        <p class="KeyName">RECEIPT CODE:</p>
+        <h1 class="KeyValue">AM6219521E</h1>
+      </div>
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Source</p>
+          <h2 class="left">Accra</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Destination</p>
+          <h2 class="right">Kumasi</h2>
+        </div>
+      </div>
+
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Receiver</p>
+          <h2 class="right">Edwin Awariyah</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Phone</p>
+          <h2 class="left">+233 24 123 4567</h2>
+        </div>
+      </div>
+
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Packaging</p>
+          <h2 class="left">1W/EBFG</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Payment</p>
+          <h2 class="right">On delivery</h2>
+        </div>
+      </div>
+
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Sent Time</p>
+          <h2 class="left">4:45 pm</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Sent Date</p>
+          <h2 class="right">March 7, 2024</h2>
+        </div>
+      </div>
+    </div>
+    <div class="SnackBar">
+      <h1 class="TitleTitle">VIPEX CO LTD</h1>
+      <p class="TextStuff">
+        VIPex Co. Ltd is a Courier Service Company duly registered in 2014 and
+        regulated by the Postal and Courier Services Regulatory Commission of
+        Ghana. The company is currently the fastest, most reliable, cost
+        effective and efficient means of sending and receiving parcels across
+        several locations in Ghana.
+      </p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/myvipbusgh/" target="_blank"
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png"
+            alt="Facebook"
+        /></a>
+        <a href="https://www.instagram.com/myvipbusgh/" target="_blank"
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png"
+            alt="Instagram"
+        /></a>
+        <a href="https://twitter.com/vip_busgh?lang=en" target="_blank"
+          ><img
+            src="https://static.dezeen.com/uploads/2023/07/x-logo-twitter-elon-musk_dezeen_2364_col_0-1.jpg"
+            alt="Twitter"
+        /></a>
+      </div>
+      <h1 class="ContactUs">Contact Us</h1>
+      <div class="Locations">
+        <h3 class="LocationTitle">Anloga Junction - Kumasi</h3>
+        <p class="TextStuff">Vipex Parcels Offce (Yaa Ataah Arcade)</p>
+        <a class="CallLink" href="tel:+233241234567">Phone: +233241234567</a>
+      </div>
+      <div class="Locations">
+        <h3 class="LocationTitle">Circle - Accra</h3>
+        <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
+        <a class="CallLink" href="tel:+233204353512">Phone: +233204353512</a>
+      </div>
+      <div class="Locations">
+        <h3 class="LocationTitle">Asafo - Kumasi</h3>
+        <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
+        <a class="CallLink" href="tel:+233204353513">Phone: +233204353513</a>
+      </div>
+      <div class="Locations">
+        <h3 class="LocationTitle">Sunyani</h3>
+        <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
+        <a class="CallLink" href="tel:+233540305280">Phone: +233540305280</a>
+      </div>
+    </div>
+    <script>
+      function toggleDrawer() {
+        var drawer = document.getElementById("drawer");
+        if (drawer.style.display === "block") {
+          drawer.style.display = "none";
+        } else {
+          drawer.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>
