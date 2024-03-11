@@ -6,14 +6,35 @@
     <link rel="icon" href="https://vipexparcel.com/favicon.ico" />
     <link rel="stylesheet" href="../CSS/style.css" />
     <style>
+      .ContainerFrame {
+        display: flex;
+        /* justify-content: space-between; */
+      }
       .SingleContainer {
-        max-width: 500px;
+        width: 40%;
         margin: 150px 20px 150px 20px;
         padding: 100px 10px 100px 10px;
         background-color: #25282e;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         text-align: center;
+        @media (max-width: 768px) {
+          max-width: 500px;
+          width: 100%;
+        }
+      }
+      .SingleContainer2 {
+        width: 60%;
+        margin: 150px 20px 150px 20px;
+        padding: 100px 10px 100px 10px;
+        background-color: #25282e;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        @media (max-width: 768px) {
+          display: none;
+          max-width: 500px;
+        }
       }
 
       h1 {
@@ -27,11 +48,14 @@
       }
 
       input[type="text"] {
-        width: 94%;
+        width: 95.5%;
         border: 1px solid #ccc;
         border-radius: 5px;
         margin: 10px 10px 10px 0px;
         padding: 10px 10px 10px 10px;
+        @media (max-width: 768px) {
+          width: 94%;
+        }
       }
 
       button {
@@ -84,25 +108,39 @@
         </div>
       </div>
     </div>
-    <div class="SingleContainer">
-      <h1 class="KeyValue">Find Parcel</h1>
-      <p>Enter the tracking number of your parcel to find it</p>
-      <form
-        id="parcelForm"
-        action="https://vipexparcel.com/FindParcel"
-        method="post"
-      >
-        <input
-          type="text"
-          id="trackingNumber"
-          name="trackingNumber"
-          class="form-control"
-          placeholder="Enter Tracking Number"
-          required
-        />
-        <button type="submit">Find</button>
-      </form>
+    <div class="ContainerFrame">
+      <div class="SingleContainer">
+        <h1 class="KeyValue">Find Parcel</h1>
+        <p>Enter the tracking number of your parcel to find it</p>
+        <form
+          id="parcelForm"
+          action="https://vipexparcel.com/FindParcel"
+          method="post"
+        >
+          <input
+            type="text"
+            id="trackingNumber"
+            name="trackingNumber"
+            class="form-control"
+            placeholder="Enter Tracking Number"
+            required
+          />
+          <button type="submit">Find</button>
+        </form>
+      </div>
+
+      <div class="SingleContainer2">
+        <h1 class="KeyValue">Tracking other Parcels</h1>
+        <p>
+          Do you have another parcel you would like to track? If so, please
+          provide the details that were included in the message you received.
+          Enter the the parcel ID in the field on the left. Once you've entered
+          the details, we'll begin tracking the new parcel and provide you with
+          real-time updates on its progress.
+        </p>
+      </div>
     </div>
+
     <div class="SnackBar">
       <h1 class="TitleTitle">VIPEX CO LTD</h1>
       <p class="TextStuff">
@@ -130,25 +168,27 @@
         /></a>
       </div>
       <h1 class="ContactUs">Contact Us</h1>
-      <div class="Locations">
-        <h3 class="LocationTitle">Anloga Junction - Kumasi</h3>
-        <p class="TextStuff">Vipex Parcels Offce (Yaa Ataah Arcade)</p>
-        <a class="CallLink" href="tel:+233241234567">Phone: +233241234567</a>
-      </div>
-      <div class="Locations">
-        <h3 class="LocationTitle">Circle - Accra</h3>
-        <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
-        <a class="CallLink" href="tel:+233204353512">Phone: +233204353512</a>
-      </div>
-      <div class="Locations">
-        <h3 class="LocationTitle">Asafo - Kumasi</h3>
-        <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
-        <a class="CallLink" href="tel:+233204353513">Phone: +233204353513</a>
-      </div>
-      <div class="Locations">
-        <h3 class="LocationTitle">Sunyani</h3>
-        <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
-        <a class="CallLink" href="tel:+233540305280">Phone: +233540305280</a>
+      <div class="PriorLocations">
+        <div class="Locations">
+          <h3 class="LocationTitle">Anloga Junction - Kumasi</h3>
+          <p class="TextStuff">Vipex Parcels Offce (Yaa Ataah Arcade)</p>
+          <a class="CallLink" href="tel:+233241234567">Phone: +233241234567</a>
+        </div>
+        <div class="Locations">
+          <h3 class="LocationTitle">Circle - Accra</h3>
+          <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
+          <a class="CallLink" href="tel:+233204353512">Phone: +233204353512</a>
+        </div>
+        <div class="Locations">
+          <h3 class="LocationTitle">Asafo - Kumasi</h3>
+          <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
+          <a class="CallLink" href="tel:+233204353513">Phone: +233204353513</a>
+        </div>
+        <div class="Locations">
+          <h3 class="LocationTitle">Sunyani</h3>
+          <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
+          <a class="CallLink" href="tel:+233540305280">Phone: +233540305280</a>
+        </div>
       </div>
     </div>
     <script>

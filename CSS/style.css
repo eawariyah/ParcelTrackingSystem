@@ -253,6 +253,14 @@ body{
   .ContactUs{
     color:#ffffff
   }
+  .PriorLocations{
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
   .Locations{
     padding-top: 10px;
   }

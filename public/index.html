@@ -19,6 +19,7 @@
       .progress-bar {
         width: 40%;
         margin-right: 20px;
+        rotate: 270deg;
       }
 
       .progress-bar label {
@@ -71,7 +72,9 @@
             <h2 id="progressStatus"></h2>
           </div>
           <div class="item-box">
-            <h2 id="time" class="Time">~ 7 hours</h2>
+            <h2 id="time" class="Time">
+              Estimated Time: <span id="estimatedTime">N/A</span>
+            </h2>
           </div>
         </div>
       </div>
@@ -173,6 +176,13 @@
           .catch((error) => {
             console.error("Error updating arrivedState:", error);
           });
+        const speed = 30; // Average speed in km/h
+        const estimatedTimeSeconds = distance / ((speed * 1000) / 3600); // Distance in km, speed in km/h
+        const estimatedHours = Math.floor(estimatedTimeSeconds / 3600);
+        const estimatedMinutes = Math.floor((estimatedTimeSeconds % 3600) / 60);
+        document.getElementById(
+          "estimatedTime"
+        ).innerText = `${estimatedHours} hours ${estimatedMinutes} minutes`;
       });
     }
 
