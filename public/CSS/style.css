@@ -293,7 +293,7 @@ body{
     background-color: #333;
     color: #fff;
     transition: transform 0.3s ease;
-    z-index: 1000;
+    z-index: 100000;
     display: none;
 
     

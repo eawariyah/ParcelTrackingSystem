@@ -6,6 +6,11 @@
     <title>Maps with Locations</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="icon" href="https://vipexparcel.com/favicon.ico" />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
 
     <style>
       body {
@@ -18,9 +23,46 @@
     </style>
   </head>
   <body>
+    <div class="header">
+      <!-- <a href="https://www.vipbustickets.com" title="#" class="flex" -->
+      <a href="../HTML/index.html" title="#" class="flex"
+        ><img
+          class="VipLogo"
+          src="../Resources/download.png"
+          alt="VIP Bus Tickets image"
+      /></a>
+      <h1 class="home">Vipex Co LTD</h1>
+      <!-- <a class="Services" href="../HTML/Services.html">Services</a>
+      <a href="https://www.vipbustickets.com" title="#" class="flex"
+        ><img
+          class="ServicesArrow"
+          src="../Resources/free-arrow-down-icon-3101-2.png"
+          alt="VIP Bus Tickets image"
+      /></a> -->
+      <div class="drawer-container">
+        <button class="toggle-button" onclick="toggleDrawer()">Services</button>
+        <div class="drawer" id="drawer">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+
+            <li><a href="./trackParcel.html">Track Bus</a></li>
+            <li><a href="./FindParcel.html">Find other parcel</a></li>
+            <li><a href="./PickUpLocations.html">Pick Up Locations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
+      function toggleDrawer() {
+        var drawer = document.getElementById("drawer");
+        if (drawer.style.display === "block") {
+          drawer.style.display = "none";
+        } else {
+          drawer.style.display = "block";
+        }
+      }
       document.addEventListener("DOMContentLoaded", function () {
         // Define the locations
         const locations = [

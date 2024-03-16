@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parcel Tracker</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* .ParcelTracker {
+        text-align: center;
+      } */
+
+      .animation-box {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .progress-bar label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .info-box {
+        flex-grow: 1;
+      }
+
+      .item-box {
+        background-color: #3d4148;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 10px;
+      }
+
+      .item-box h2 {
+        margin: 0;
+      }
+
+      /* Animation */
+      @keyframes progressAnimation {
+        from {
+          width: 0;
+        }
+      }
+
+      progress {
+        animation: progressAnimation 2s ease-in-out forwards;
+        margin-top: 50%;
+        /* margin-left: 20%; */
+        rotate: 270deg;
+        width: 200px;
+        @media (max-width: 768px) {
+          animation: progressAnimation 2s ease-in-out forwards;
+          margin-top: 80%;
+          margin-left: -10%;
+          rotate: 270deg;
+          width: 200px;
+        }
+      }
+      .indexValues {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-left: 60%;
+        margin-top: -50%;
+        @media (max-width: 768px) {
+          padding-left: 70%;
+          margin-top: -60%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <!-- <a href="https://www.vipbustickets.com" title="#" class="flex" -->
+      <a href="../HTML/index.html" title="#" class="flex"
+        ><img
+          class="VipLogo"
+          src="../Resources/download.png"
+          alt="VIP Bus Tickets image"
+      /></a>
+      <h1 class="home">Vipex Co LTD</h1>
+      <!-- <a class="Services" href="../HTML/Services.html">Services</a>
+      <a href="https://www.vipbustickets.com" title="#" class="flex"
+        ><img
+          class="ServicesArrow"
+          src="../Resources/free-arrow-down-icon-3101-2.png"
+          alt="VIP Bus Tickets image"
+      /></a> -->
+      <div class="drawer-container">
+        <button class="toggle-button" onclick="toggleDrawer()">Services</button>
+        <div class="drawer" id="drawer">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+
+            <li><a href="./trackParcel.html">Track Bus</a></li>
+            <li><a href="./FindParcel.html">Find other parcel</a></li>
+            <li><a href="./PickUpLocations.html">Pick Up Locations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="ParcelContent">
+      <h1 class="ParcelTracker">Parcel Tracker</h1>
+      <div class="animation-box">
+        <div class="progress-bar">
+          <label for="progressBar">Progress</label>
+
+          <progress id="progressBar" value="0" min="0" max="100">%</progress>
+          <div class="indexValues">
+            <h6 class="hundred">100%</h6>
+            <h6 class="fifty">50%</h6>
+            <h6 class="0">0%</h6>
+          </div>
+        </div>
+        <div class="info-box">
+          <div class="item-box">
+            <h2 class="DistanceIs">Distance is:</h2>
+            <h2 class="DistanceValue" id="distanceValue"></h2>
+          </div>
+          <div class="item-box">
+            <h2 id="progressStatus"></h2>
+          </div>
+          <div class="item-box">
+            <h2 id="time" class="Time">
+              Estimated Time: <span id="estimatedTime">N/A</span>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="SnackBar">
+      <h1 class="TitleTitle">VIPEX CO LTD</h1>
+      <p class="TextStuff">
+        VIPex Co. Ltd is a Courier Service Company duly registered in 2014 and
+        regulated by the Postal and Courier Services Regulatory Commission of
+        Ghana. The company is currently the fastest, most reliable, cost
+        effective and efficient means of sending and receiving parcels across
+        several locations in Ghana.
+      </p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/myvipbusgh/" target="_blank"
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png"
+            alt="Facebook"
+        /></a>
+        <a href="https://www.instagram.com/myvipbusgh/" target="_blank"
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png"
+            alt="Instagram"
+        /></a>
+        <a href="https://twitter.com/vip_busgh?lang=en" target="_blank"
+          ><img
+            src="https://static.dezeen.com/uploads/2023/07/x-logo-twitter-elon-musk_dezeen_2364_col_0-1.jpg"
+            alt="Twitter"
+        /></a>
+      </div>
+      <h1 class="ContactUs">Contact Us</h1>
+      <div class="PriorLocations">
+        <div class="Locations">
+          <h3 class="LocationTitle">Anloga Junction - Kumasi</h3>
+          <p class="TextStuff">Vipex Parcels Offce (Yaa Ataah Arcade)</p>
+          <a class="CallLink" href="tel:+233241234567">Phone: +233241234567</a>
+        </div>
+        <div class="Locations">
+          <h3 class="LocationTitle">Circle - Accra</h3>
+          <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
+          <a class="CallLink" href="tel:+233204353512">Phone: +233204353512</a>
+        </div>
+        <div class="Locations">
+          <h3 class="LocationTitle">Asafo - Kumasi</h3>
+          <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
+          <a class="CallLink" href="tel:+233204353513">Phone: +233204353513</a>
+        </div>
+        <div class="Locations">
+          <h3 class="LocationTitle">Sunyani</h3>
+          <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
+          <a class="CallLink" href="tel:+233540305280">Phone: +233540305280</a>
+        </div>
+      </div>
+    </div>
+    <!-- <script src="script.js"></script> -->
+  </body>
+  <!-- <script src="../JS/index.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBy9PfTUKSklxPDo4Sm8Cr7Q4yQvpDoz-A",
+      authDomain: "bustrackingsystem-7f036.firebaseapp.com",
+      databaseURL:
+        "https://bustrackingsystem-7f036-default-rtdb.firebaseio.com",
+      projectId: "bustrackingsystem-7f036",
+      storageBucket: "bustrackingsystem-7f036.appspot.com",
+      messagingSenderId: "226831139838",
+      appId: "1:226831139838:web:9fd76bb79423b0fc23f6af",
+      measurementId: "G-S72Z6K6WVQ",
+    };
+    function toggleDrawer() {
+      var drawer = document.getElementById("drawer");
+      if (drawer.style.display === "block") {
+        drawer.style.display = "none";
+      } else {
+        drawer.style.display = "block";
+      }
+    }
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+
+    function displayFirebaseValues() {
+      // Reference to the testValues node
+      const testValuesRef = database.ref("gpsCoordinates");
+
+      // Fetch data once from the testValues node
+      testValuesRef.once("value", (snapshot) => {
+        // Get the snapshot value
+        const data = snapshot.val();
+
+        // Log each value to the console
+        // console.log("altitudeValue:", data.altitudeValue);
+        // console.log("latitudeValue:", data.latitudeValue);
+        // console.log("longitudeValue:", data.longitudeValue);
+        // console.log("satelliteValue:", data.satelliteValue);
+        // console.log("speedValue:", data.speedValue);
+
+        const lat1 = 5.695604; // Start
+        const lon1 = -0.247041; // Start
+
+        const lat2 = 5.761273; // Goal
+        const lon2 = -0.22054; // Goal
+
+        const currentLat = data.latitudeValue; // Current
+        const currentLon = data.longitudeValue; // Current
+
+        const R = 6371e3; // metres
+        const φ1 = (lat1 * Math.PI) / 180; // φ, λ in radians
+        const φ2 = (lat2 * Math.PI) / 180;
+        const Δφ = ((lat2 - lat1) * Math.PI) / 180;
+        const Δλ = ((lon2 - lon1) * Math.PI) / 180;
+
+        const a =
+          Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+          Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        const distance = R * c; // in metres
+
+        document.getElementById("distanceValue").innerHTML =
+          distance.toFixed(2) + " meters";
+
+        // Calculate the distance from current location to goal
+        const φ3 = (currentLat * Math.PI) / 180;
+        const φ4 = (lat2 * Math.PI) / 180;
+        const Δφ2 = ((lat2 - currentLat) * Math.PI) / 180;
+        const Δλ2 = ((lon2 - currentLon) * Math.PI) / 180;
+
+        const a2 =
+          Math.sin(Δφ2 / 2) * Math.sin(Δφ2 / 2) +
+          Math.cos(φ3) * Math.cos(φ4) * Math.sin(Δλ2 / 2) * Math.sin(Δλ2 / 2);
+        const c2 = 2 * Math.atan2(Math.sqrt(a2), Math.sqrt(1 - a2));
+
+        const currentDistance = R * c2; // in metres
+
+        // Calculate the percentage of the current distance relative to the total distance
+        const progressPercentage =
+          ((distance - currentDistance) / distance) * 100;
+        document.getElementById("progressStatus").innerHTML =
+          progressPercentage.toFixed(2) + "%";
+
+        // Update the progress bar
+        document.getElementById("progressBar").value = progressPercentage;
+
+        // Update arrivedState based on progressPercentage
+        const arrivedState = progressPercentage >= 95.0 ? true : false;
+
+        // Set or update arrivedState in Firebase
+        const arrivedStateRef = database.ref("arrivedState");
+        arrivedStateRef
+          .set(arrivedState)
+          .then(() => {
+            console.log("arrivedState updated successfully!");
+          })
+          .catch((error) => {
+            console.error("Error updating arrivedState:", error);
+          });
+        const speed = 30; // Average speed in km/h
+        const estimatedTimeSeconds = distance / ((speed * 1000) / 3600); // Distance in km, speed in km/h
+        const estimatedHours = Math.floor(estimatedTimeSeconds / 3600);
+        const estimatedMinutes = Math.floor((estimatedTimeSeconds % 3600) / 60);
+        document.getElementById(
+          "estimatedTime"
+        ).innerText = `${estimatedHours} hours ${estimatedMinutes} minutes`;
+      });
+    }
+
+    setInterval(displayFirebaseValues, 1000);
+  </script>
+</html>
