@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parcel Tracking</title>
+    <link rel="stylesheet" href="admin.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Parcel Tracking Input</h2>
+      <form id="trackingForm">
+        <label for="vehicleId">Vehicle ID:</label>
+        <!-- <input type="text" id="vehicleId" required /><br /> -->
+
+        <input type="text" id="vehicleId" list="VehicleIdList" required />
+        <datalist id="VehicleIdList">
+          <option value="GX-4671-18">GX-4671-18</option>
+          <option value="GV-590-22">GV-590-22</option>
+          <option value="WR-376-24">WR-376-24</option></datalist
+        ><br />
+
+        <label for="initialCoordinates">Initial Coordinates:</label>
+        <input
+          type="text"
+          id="initialCoordinatesInput"
+          list="initialCoordinatesList"
+          required
+        />
+        <datalist id="initialCoordinatesList">
+          <option value="Accra">Accra</option>
+          <option value="Kumasi">Kumasi</option>
+          <option value="Sunyani">Sunyani</option></datalist
+        ><br />
+
+        <label for="goalCoordinates">Goal Coordinates:</label>
+        <input
+          type="text"
+          id="goalCoordinatesInput"
+          list="goalCoordinatesList"
+          required
+        />
+        <datalist id="goalCoordinatesList">
+          <option value="Accra">Accra</option>
+          <option value="Kumasi">Kumasi</option>
+          <option value="Sunyani">Sunyani</option></datalist
+        ><br />
+
+        <input type="hidden" id="goalCoordinatesInput" required /><br />
+
+        <label for="approved">Approved:</label>
+        <input type="checkbox" id="approved" /><br />
+
+        <label for="processed">Processed:</label>
+        <input type="checkbox" id="processed" /><br />
+
+        <label for="inTransit">In-Transit:</label>
+        <input type="checkbox" id="inTransit" /><br />
+
+        <label for="delivered">Delivered:</label>
+        <input type="checkbox" id="delivered" /><br />
+
+        <label for="received">Received:</label>
+        <input type="checkbox" id="received" /><br />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <div id="snackbar" style="display: none">Data sent</div>
+    <!-- <div id="snackbar">Data sent</div> -->
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
