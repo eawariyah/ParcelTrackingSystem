@@ -4,38 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vipxparcel</title>
-    <link rel="stylesheet" href="./CSS/style.css" />
+    <link rel="stylesheet" href="./style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Poppins"
       rel="stylesheet"
     />
     <link rel="icon" href="https://vipexparcel.com/favicon.ico" />
+    <script src="./index.js"></script>
   </head>
 
   <body>
     <div class="header">
-      <!-- <a href="https://www.vipbustickets.com" title="#" class="flex" -->
-      <a href="./newIndex.html" title="#" class="flex"
-        ><img
-          class="VipLogo"
-          src="./Resources/download.png"
-          alt="VIP Bus Tickets image"
+      <a href="./index.html" title="#" class="flex"
+        ><img class="VipLogo" src="./download.png" alt="VIP Bus Tickets image"
       /></a>
       <h1 class="home">Vipex Co LTD</h1>
-      <!-- <a class="Services" href="../HTML/Services.html">Services</a>
-      <a href="https://www.vipbustickets.com" title="#" class="flex"
-        ><img
-          class="ServicesArrow"
-          src="../Resources/free-arrow-down-icon-3101-2.png"
-          alt="VIP Bus Tickets image"
-      /></a> -->
       <div class="drawer-container">
         <button class="toggle-button" onclick="toggleDrawer()">Services</button>
         <div class="drawer" id="drawer">
           <ul>
             <li><a href="./index.html">Home</a></li>
-
-            <li><a href="../public/HTML/trackParcel.html">Track Bus</a></li>
+            <li><a href="./trackParcel.html">Track Bus</a></li>
             <li><a href="./FindParcel.html">Find other parcel</a></li>
             <li><a href="./PickUpLocations.html">Pick Up Locations</a></li>
           </ul>
@@ -69,13 +58,6 @@
         <div class="step-name">Arrived</div>
       </div>
     </div>
-
-    <!-- <h2>Distance is:</h2>
-    <h2 class="distanceValue"></h2>
-    <label for="progressBar">Progress:</label>
-    <progress class="progressBar" value="0" min="0" max="100">%</progress>
-    <h2 class="progressStatus"></h2>
-    <tbody class="bookList"></tbody> -->
 
     <div class="ParcelContent">
       <h1 class="ProgressBanner">Progress: In Transit!</h1>
@@ -178,15 +160,5 @@
         </div>
       </div>
     </div>
-    <script>
-      function toggleDrawer() {
-        var drawer = document.getElementById("drawer");
-        if (drawer.style.display === "block") {
-          drawer.style.display = "none";
-        } else {
-          drawer.style.display = "block";
-        }
-      }
-    </script>
   </body>
 </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vonage SMS Example</title>
+  </head>
+  <body>
+    <button onclick="sendSMS()">Send SMS</button>
+
+    <script>
+      // Function to send SMS
+      function sendSMS() {
+        // Vonage API credentials
+        const apiKey = "85ff5bd7";
+        const apiSecret = "8bHKjpYmzAzvu2xs";
+
+        // Sender and recipient details
+        const from = "Vonage APIs";
+        const to = "233558268006"; // Should be in international format, e.g., '+1234567890'
+
+        // Message details
+        const text = "Hello from Vonage!";
+
+        // Construct URL for Vonage SMS API
+        const url = `https://rest.nexmo.com/sms/json?api_key=${apiKey}&api_secret=${apiSecret}&from=${from}&to=${to}&text=${text}`;
+
+        // Send HTTP POST request to Vonage SMS API
+        fetch(url, { method: "POST" })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("SMS sent successfully:", data);
+            alert("SMS sent successfully!");
+          })
+          .catch((error) => {
+            console.error("Error sending SMS:", error);
+            alert("Error sending SMS. Please try again later.");
+          });
+      }
+    </script>
+  </body>
+</html>

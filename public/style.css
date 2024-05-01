@@ -72,7 +72,9 @@ body{
     padding: 2%;
     background-color: #25282E; 
     border-radius: 10px;  
-    margin: 2%; 
+    margin: 2%;
+    border: white 1px solid;
+
 }
 .ProgressBanner{
   display: flex;
@@ -188,7 +190,7 @@ body{
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #ccc;
+    background: black;
     margin-bottom: 6px;
   }
   
