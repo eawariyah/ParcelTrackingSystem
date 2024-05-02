@@ -41,6 +41,8 @@ trackingForm.addEventListener('submit', (e) => {
   const vehicleId = document.getElementById('vehicleId').value;
   var initialCoordinates = document.getElementById('initialCoordinatesInput').value;
   var goalCoordinates = document.getElementById('goalCoordinatesInput').value;
+  const currentLat = 5.76099;
+  const currentLon = -0.21971;
   const approved = document.getElementById('approved').checked;
   const processed = document.getElementById('processed').checked;
   const inTransit = document.getElementById('inTransit').checked;
@@ -49,22 +51,28 @@ trackingForm.addEventListener('submit', (e) => {
 
 
 if(initialCoordinates === "Accra"){
-initialCoordinates = "5.568028, -0.219707";
+initialCoordinatesLat = 5.568028;
+initialCoordinatesLon = -0.219707;
 }
 if(goalCoordinates === "Accra"){
-goalCoordinates = "5.568028, -0.219707";
+goalCoordinatesLat = 5.568028;
+goalCoordinatesLon = -0.219707;
 }
 if(initialCoordinates === "Kumasi"){
-initialCoordinates = "6.687768, -1.595859";
+initialCoordinatesLat = 6.687768;
+initialCoordinatesLon = -1.595859;
 }
 if(goalCoordinates === "Kumasi"){
-goalCoordinates = "6.687768, -1.595859";
+goalCoordinatesLat = 6.687768;
+goalCoordinatesLon = -1.595859;
 }
 if(initialCoordinates === "Sunyani"){
-initialCoordinates = "7.331780, -2.320112";
+initialCoordinatesLat = 7.331780;
+initialCoordinatesLon = -2.320112;
 }
 if(goalCoordinates === "Sunyani"){
-goalCoordinates = "7.331780, -2.320112";
+goalCoordinatesLat = 7.331780;
+goalCoordinatesLon = -2.320112;
 }
 if (initialCoordinates === goalCoordinates) {
     alert('Initial and goal coordinates cannot be the same!');
@@ -72,10 +80,19 @@ if (initialCoordinates === goalCoordinates) {
 
 }
 
-  // Push data to Firebase RTDB
   database.ref('parcels/' + vehicleId).set({
-    initialCoordinates: initialCoordinates,
-    goalCoordinates: goalCoordinates,
+    initialCoordinates:{
+    initialCoordinatesLat: initialCoordinatesLat,
+    initialCoordinatesLon: initialCoordinatesLon,
+    },
+    goalCoordinates:{
+    goalCoordinatesLat: goalCoordinatesLat,
+    goalCoordinatesLon: goalCoordinatesLon,
+    },
+    currentCoordinates: {
+      currentLat: currentLat,
+      currentLon: currentLon
+    },
     states: {
       approved: approved,
       processed: processed,
@@ -85,7 +102,6 @@ if (initialCoordinates === goalCoordinates) {
     }
   }).then(() => {
     console.log('Data submitted successfully!');
-    // Clear form fields
     trackingForm.reset();
     showSnackbar();
 

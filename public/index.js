@@ -102,6 +102,8 @@ function displayFirebaseValues() {
 }
 
 setInterval(displayFirebaseValues, 1000);
+
+
 function toggleDrawer() {
     var drawer = document.getElementById("drawer");
     if (drawer.style.display === "block") {
