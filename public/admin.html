@@ -3,11 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Parcel Tracking</title>
+    <title>New User</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="https://vipexparcel.com/favicon.ico" />
     <link rel="stylesheet" href="admin.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
+    <div class="header">
+      <a href="./index.html" title="#" class="flex"
+        ><img class="VipLogo" src="./download.png" alt="VIP Bus Tickets image"
+      /></a>
+      <h1 class="home">Vipex Co LTD</h1>
+      <div class="drawer-container">
+        <button class="toggle-button" onclick="toggleDrawer()">Services</button>
+        <div class="drawer" id="drawer">
+          <ul>
+            <li><a href="./newUser.html">New User</a></li>
+            <li><a href="./admin.html">Busses</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <h2>Parcel Tracking Input</h2>
       <form id="trackingForm">
@@ -71,5 +93,15 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
     <script src="admin.js"></script>
+    <script>
+      function toggleDrawer() {
+        var drawer = document.getElementById("drawer");
+        if (drawer.style.display === "block") {
+          drawer.style.display = "none";
+        } else {
+          drawer.style.display = "block";
+        }
+      }
+    </script>
   </body>
 </html>
