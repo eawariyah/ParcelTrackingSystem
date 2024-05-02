@@ -51,26 +51,32 @@ trackingForm.addEventListener('submit', (e) => {
 
 
 if(initialCoordinates === "Accra"){
+sourceLocation = "Accra";
 initialCoordinatesLat = 5.568028;
 initialCoordinatesLon = -0.219707;
 }
 if(goalCoordinates === "Accra"){
+goalLocation = "Accra";
 goalCoordinatesLat = 5.568028;
 goalCoordinatesLon = -0.219707;
 }
 if(initialCoordinates === "Kumasi"){
+sourceLocation = "Kumasi";
 initialCoordinatesLat = 6.687768;
 initialCoordinatesLon = -1.595859;
 }
 if(goalCoordinates === "Kumasi"){
+goalLocation = "Kumasi";
 goalCoordinatesLat = 6.687768;
 goalCoordinatesLon = -1.595859;
 }
 if(initialCoordinates === "Sunyani"){
+sourceLocation = "Sunyani";
 initialCoordinatesLat = 7.331780;
 initialCoordinatesLon = -2.320112;
 }
 if(goalCoordinates === "Sunyani"){
+goalLocation = "Sunyani";
 goalCoordinatesLat = 7.331780;
 goalCoordinatesLon = -2.320112;
 }
@@ -80,12 +86,14 @@ if (initialCoordinates === goalCoordinates) {
 
 }
 
-  database.ref('parcels/' + vehicleId).set({
+  database.ref('busses/' + vehicleId).set({
     initialCoordinates:{
+    sourceLocation: sourceLocation,
     initialCoordinatesLat: initialCoordinatesLat,
     initialCoordinatesLon: initialCoordinatesLon,
     },
     goalCoordinates:{
+    goalLocation: goalLocation,
     goalCoordinatesLat: goalCoordinatesLat,
     goalCoordinatesLon: goalCoordinatesLon,
     },
