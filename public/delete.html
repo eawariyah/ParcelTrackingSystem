@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      .stepper-wrapper {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        color: white;
+      }
+      .stepper-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+
+        @media (max-width: 768px) {
+          font-size: 12px;
+        }
+      }
+
+      .stepper-item::before {
+        position: absolute;
+        content: "";
+        border-bottom: 2px solid #ccc;
+        width: 100%;
+        top: 20px;
+        left: -50%;
+        z-index: 2;
+      }
+
+      .stepper-item::after {
+        position: absolute;
+        content: "";
+        border-bottom: 2px solid #ccc;
+        width: 100%;
+        top: 20px;
+        left: 50%;
+        z-index: 2;
+      }
+
+      .stepper-item .step-counter {
+        position: relative;
+        z-index: 5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: black;
+        margin-bottom: 6px;
+      }
+
+      .stepper-item.active {
+        font-weight: bold;
+      }
+
+      .stepper-item.completed .step-counter {
+        /* background-color: #4bb543; */
+        background-color: #ce1b28;
+      }
+
+      .stepper-item.completed::after {
+        position: absolute;
+        content: "";
+        /* border-bottom: 2px solid #4bb543; */
+        border-bottom: 2px solid #ce1b28;
+
+        width: 100%;
+        top: 20px;
+        left: 50%;
+        z-index: 3;
+      }
+
+      .stepper-item:first-child::before {
+        content: none;
+      }
+      .stepper-item:last-child::after {
+        content: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stepper-wrapper" id="stepperWrapper"></div>
+    <script>
+      // Define the number of steps
+      const numSteps = 5;
+
+      // Function to generate stepper items
+      function generateStepperItems(step) {
+        const stepperWrapper = document.getElementById("stepperWrapper");
+        stepperWrapper.innerHTML = ""; // Clear previous content
+
+        for (let i = 1; i <= numSteps; i++) {
+          const stepperItem = document.createElement("div");
+          stepperItem.classList.add("stepper-item");
+          stepperItem.id = `step${i}`;
+          if (i < step) {
+            stepperItem.classList.add("completed");
+          } else if (i === step) {
+            stepperItem.classList.add("active");
+          }
+
+          const stepCounter = document.createElement("div");
+          stepCounter.classList.add("step-counter");
+          stepCounter.textContent = i;
+
+          const stepName = document.createElement("div");
+          stepName.classList.add("step-name");
+          // Set step names as desired
+          switch (i) {
+            case 1:
+              stepName.textContent = "Approved";
+              break;
+            case 2:
+              stepName.textContent = "Processed";
+              break;
+            case 3:
+              stepName.textContent = "Transit";
+              break;
+            case 4:
+              stepName.textContent = "Delivered";
+              break;
+            case 5:
+              stepName.textContent = "Received";
+              break;
+            default:
+              break;
+          }
+
+          stepperItem.appendChild(stepCounter);
+          stepperItem.appendChild(stepName);
+          stepperWrapper.appendChild(stepperItem);
+        }
+      }
+
+      // Call the function with the desired step
+      var step = 4; // For example, set the second step
+      generateStepperItems(step);
+    </script>
+  </body>
+</html>
