@@ -337,4 +337,9 @@ body{
     cursor: pointer;
 
   }
+
+  
+  .toggle-button:hover {
+    background-color: #555;
+  }
   

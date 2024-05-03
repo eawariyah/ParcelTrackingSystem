@@ -23,6 +23,7 @@
         <div class="drawer" id="drawer">
           <ul>
             <li><a href="./newUser.html">New User</a></li>
+            <li><a href="./addBusses.html">Add Busses</a></li>
             <li><a href="./manageBusses.html">Manage Busses</a></li>
           </ul>
         </div>
@@ -33,9 +34,10 @@
       <input
         type="text"
         id="searchInput"
-        placeholder="Search by Vehicle ID, Initial Coordinates, or Goal Coordinates"
+        placeholder="Search by Vehicle ID"
+        onkeyup="searchBuses()"
       />
-      <button id="searchButton">Search</button>
+
       <table id="busTable">
         <thead>
           <tr>
@@ -48,7 +50,6 @@
         <tbody id="busList"></tbody>
       </table>
     </div>
-
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
     <script src="manageBusses.js"></script>

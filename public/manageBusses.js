@@ -16,8 +16,41 @@ const database = firebase.database();
 
 const busTable = document.getElementById('busTable');
 const busList = document.getElementById('busList');
+document.getElementById('searchInput').addEventListener('input', searchBuses);
+
+function searchBuses() {
+    const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+  
+    database.ref('busses').once('value', (snapshot) => {
+      busList.innerHTML = ''; // Clear previous bus data
+  
+      snapshot.forEach((bus) => {
+        const busData = bus.val();
+        const busId = bus.key.toLowerCase();
+        const initialCoordinates = busData.initialCoordinates.sourceLocation.toLowerCase();
+        const goalCoordinates = busData.goalCoordinates.goalLocation.toLowerCase();
+  
+        // Check if the search query matches the bus ID, initial coordinates, or goal coordinates
+        if (busId.includes(searchQuery) || initialCoordinates.includes(searchQuery) || goalCoordinates.includes(searchQuery)) {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${bus.key}</td>
+            <td>${busData.initialCoordinates.sourceLocation}</td>
+            <td>${busData.goalCoordinates.goalLocation}</td>
+            <td>
+              <button onclick="editCoordinates('${bus.key}')">Edit</button>
+              <button onclick="deleteBus('${bus.key}')">Delete</button>
+            </td>
+          `;
+          busList.appendChild(row);
+        }
+      });
+    });
+  }
 
 function displayBuses() {
+    searchBuses();
+
     busList.innerHTML = ''; // Clear previous bus data
 
     database.ref('busses').once('value', (snapshot) => {
