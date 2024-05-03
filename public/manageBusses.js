@@ -9,100 +9,74 @@ const firebaseConfig = {
     appId: "1:226831139838:web:9fd76bb79423b0fc23f6af",
     measurementId: "G-S72Z6K6WVQ",
   };
-  
-  firebase.initializeApp(firebaseConfig);
+
+
+firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-const trackingForm = document.getElementById('trackingForm');
-const snackbar = document.getElementById('snackbar');
+const busTable = document.getElementById('busTable');
+const busList = document.getElementById('busList');
 
-function setCoordinates(coords, input) {
-  const isInitial = input.id === 'initialCoordinatesInput';
+function displayBuses() {
+    busList.innerHTML = ''; // Clear previous bus data
 
-  if (input.value === coords) {
-    // If already selected, clear input value
-    input.value = '';
-  } else {
-    // Set input value to selected coordinates
-    input.value = coords;
-  }
-}
-function showSnackbar() {
-    snackbar.style.display = 'block'; // Show the snackbar
-    setTimeout(() => {
-      snackbar.style.display = 'none'; // Hide the snackbar after 3 seconds
-    }, 3000);
-  }
-  
-
-trackingForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const vehicleId = document.getElementById('vehicleId').value;
-  var initialCoordinates = document.getElementById('initialCoordinatesInput').value;
-  var goalCoordinates = document.getElementById('goalCoordinatesInput').value;
-  const currentLat = 5.76099;
-  const currentLon = -0.21971;
-
-
-
-if(initialCoordinates === "Accra"){
-  sourceLocation = "Accra";
-  initialCoordinatesLat = 5.568028;
-  initialCoordinatesLon = -0.219707;
-}
-if(goalCoordinates === "Accra"){
-  goalLocation = "Accra";
-  goalCoordinatesLat = 5.568028;
-  goalCoordinatesLon = -0.219707;
-}
-if(initialCoordinates === "Kumasi"){
-sourceLocation = "Kumasi";
-initialCoordinatesLat = 6.687768;
-initialCoordinatesLon = -1.595859;
-}
-if(goalCoordinates === "Kumasi"){
-  goalLocation = "Kumasi";
-  goalCoordinatesLat = 6.687768;
-  goalCoordinatesLon = -1.595859;
-}
-if(initialCoordinates === "Sunyani"){
-  sourceLocation = "Sunyani";
-  initialCoordinatesLat = 7.331780;
-  initialCoordinatesLon = -2.320112;
-}
-if(goalCoordinates === "Sunyani"){
-  goalLocation = "Sunyani";
-  goalCoordinatesLat = 7.331780;
-  goalCoordinatesLon = -2.320112;
-}
-if (initialCoordinates === goalCoordinates) {
-    alert('Initial and goal coordinates cannot be the same!');
-    trackingForm.reset();
-
+    database.ref('busses').once('value', (snapshot) => {
+        snapshot.forEach((bus) => {
+            const busData = bus.val();
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${bus.key}</td>
+                <td>${busData.initialCoordinates.sourceLocation}</td>
+                <td>${busData.goalCoordinates.goalLocation}</td>
+                <td>
+                    <button onclick="editCoordinates('${bus.key}')">Edit</button>
+                    <button onclick="deleteBus('${bus.key}')">Delete</button>
+                </td>
+            `;
+            busList.appendChild(row);
+        });
+    });
 }
 
-  database.ref('busses/' + vehicleId).set({
-    initialCoordinates:{
-    sourceLocation: sourceLocation,
-    initialCoordinatesLat: initialCoordinatesLat,
-    initialCoordinatesLon: initialCoordinatesLon,
-    },
-    goalCoordinates:{
-    goalLocation: goalLocation,
-    goalCoordinatesLat: goalCoordinatesLat,
-    goalCoordinatesLon: goalCoordinatesLon,
-    },
-    currentCoordinates: {
-      currentLat: currentLat,
-      currentLon: currentLon
-    },
-  }).then(() => {
-    console.log('Data submitted successfully!');
-    trackingForm.reset();
-    showSnackbar();
+function editCoordinates(busId) {
+    const newInitialCoordinates = prompt(`Enter new Initial Coordinates for bus ${busId}:`);
+    const newGoalCoordinates = prompt(`Enter new Goal Coordinates for bus ${busId}:`);
 
-  }).catch((error) => {
-    console.error('Error submitting data:', error);
-  });
-});
+    if (newInitialCoordinates !== null && newGoalCoordinates !== null) {
+        // Update the bus coordinates in the database
+        database.ref(`busses/${busId}`).update({
+            initialCoordinates: {
+                sourceLocation: newInitialCoordinates,
+                initialCoordinatesLat: '', // Update with new latitude
+                initialCoordinatesLon: '', // Update with new longitude
+            },
+            goalCoordinates: {
+                goalLocation: newGoalCoordinates,
+                goalCoordinatesLat: '', // Update with new latitude
+                goalCoordinatesLon: '', // Update with new longitude
+            }
+        }).then(() => {
+            alert(`Coordinates updated successfully for bus ${busId}`);
+            displayBuses();
+        }).catch((error) => {
+            console.error('Error updating coordinates:', error);
+            alert('An error occurred while updating coordinates. Please try again.');
+        });
+    }
+}
+
+function deleteBus(busId) {
+    if (confirm(`Are you sure you want to delete bus ${busId}?`)) {
+        // Remove the bus from the database
+        database.ref(`busses/${busId}`).remove().then(() => {
+            alert(`Bus ${busId} deleted successfully`);
+            displayBuses();
+        }).catch((error) => {
+            console.error('Error deleting bus:', error);
+            alert('An error occurred while deleting the bus. Please try again.');
+        });
+    }
+}
+
+// Initial display of buses
+displayBuses();

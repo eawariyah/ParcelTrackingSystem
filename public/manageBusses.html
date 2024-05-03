@@ -3,22 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New User</title>
-    <link rel="stylesheet" href="./style.css" />
+    <title>Manage Buses</title>
+    <link rel="stylesheet" href="manageBusses.css" />
+    <link rel="stylesheet" href="style.css" />
+
     <link
       href="https://fonts.googleapis.com/css?family=Poppins"
       rel="stylesheet"
     />
-    <link rel="icon" href="https://vipexparcel.com/favicon.ico" />
-    <link rel="stylesheet" href="manageBusses.css" />
-    <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
     <div class="header">
-      <a href="./index.html" title="#" class="flex"
-        ><img class="VipLogo" src="./download.png" alt="VIP Bus Tickets image"
-      /></a>
+      <a href="./index.html" title="#" class="flex">
+        <img class="VipLogo" src="./download.png" alt="VIP Bus Tickets image" />
+      </a>
       <h1 class="home">Vipex Co LTD</h1>
       <div class="drawer-container">
         <button class="toggle-button" onclick="toggleDrawer()">Services</button>
@@ -31,49 +29,26 @@
       </div>
     </div>
     <div class="container">
-      <h2>ADD A NEW BUS</h2>
-      <form id="trackingForm">
-        <label for="vehicleId">Vehicle ID:</label>
-        <!-- <input type="text" id="vehicleId" required /><br /> -->
-
-        <input type="text" id="vehicleId" list="VehicleIdList" required />
-        <datalist id="VehicleIdList">
-          <option value="GX-4671-18">GX-4671-18</option>
-          <option value="GV-590-22">GV-590-22</option>
-          <option value="WR-376-24">WR-376-24</option></datalist
-        ><br />
-
-        <label for="initialCoordinates">Initial Coordinates:</label>
-        <input
-          type="text"
-          id="initialCoordinatesInput"
-          list="initialCoordinatesList"
-          required
-        />
-        <datalist id="initialCoordinatesList">
-          <option value="Accra">Accra</option>
-          <option value="Kumasi">Kumasi</option>
-          <option value="Sunyani">Sunyani</option></datalist
-        ><br />
-
-        <label for="goalCoordinates">Goal Coordinates:</label>
-        <input
-          type="text"
-          id="goalCoordinatesInput"
-          list="goalCoordinatesList"
-          required
-        />
-        <datalist id="goalCoordinatesList">
-          <option value="Accra">Accra</option>
-          <option value="Kumasi">Kumasi</option>
-          <option value="Sunyani">Sunyani</option></datalist
-        ><br />
-
-        <input type="hidden" id="goalCoordinatesInput" required /><br />
-        <button type="submit">Add bus</button>
-      </form>
+      <h2>Manage Buses</h2>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by Vehicle ID, Initial Coordinates, or Goal Coordinates"
+      />
+      <button id="searchButton">Search</button>
+      <table id="busTable">
+        <thead>
+          <tr>
+            <th>Vehicle ID</th>
+            <th>Initial Coordinates</th>
+            <th>Goal Coordinates</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="busList"></tbody>
+      </table>
     </div>
-    <div id="snackbar" style="display: none">Data sent</div>
+
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
     <script src="manageBusses.js"></script>
