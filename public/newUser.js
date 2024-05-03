@@ -21,6 +21,9 @@ userRegistrationForm.addEventListener('submit', (e) => {
 
     const sourceLocation = document.getElementById('sourceLocation').value;
     const destinationLocation = document.getElementById('destinationLocation').value;
+    const vehicleId = document.getElementById('vehicleId').value;
+    const senderName = document.getElementById('senderName').value;
+    const SenderPhoneNumber = document.getElementById('SenderPhoneNumber').value;
     const receiverName = document.getElementById('receiverName').value;
     const phoneNumber = document.getElementById('phoneNumber').value;
     const packagingDimensions = document.getElementById('packagingDimensions').value;
@@ -33,6 +36,9 @@ userRegistrationForm.addEventListener('submit', (e) => {
     database.ref('users/' + uniqueId).set({
         sourceLocation: sourceLocation,
         destinationLocation: destinationLocation,
+        vehicleId: vehicleId,
+        senderName: senderName,
+        SenderPhoneNumber: SenderPhoneNumber,
         receiverName: receiverName,
         phoneNumber: phoneNumber,
         packagingDimensions: packagingDimensions,

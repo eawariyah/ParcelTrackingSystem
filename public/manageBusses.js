@@ -43,22 +43,18 @@ trackingForm.addEventListener('submit', (e) => {
   var goalCoordinates = document.getElementById('goalCoordinatesInput').value;
   const currentLat = 5.76099;
   const currentLon = -0.21971;
-  const approved = document.getElementById('approved').checked;
-  const processed = document.getElementById('processed').checked;
-  const inTransit = document.getElementById('inTransit').checked;
-  const delivered = document.getElementById('delivered').checked;
-  const received = document.getElementById('received').checked;
+
 
 
 if(initialCoordinates === "Accra"){
-sourceLocation = "Accra";
-initialCoordinatesLat = 5.568028;
-initialCoordinatesLon = -0.219707;
+  sourceLocation = "Accra";
+  initialCoordinatesLat = 5.568028;
+  initialCoordinatesLon = -0.219707;
 }
 if(goalCoordinates === "Accra"){
-goalLocation = "Accra";
-goalCoordinatesLat = 5.568028;
-goalCoordinatesLon = -0.219707;
+  goalLocation = "Accra";
+  goalCoordinatesLat = 5.568028;
+  goalCoordinatesLon = -0.219707;
 }
 if(initialCoordinates === "Kumasi"){
 sourceLocation = "Kumasi";
@@ -66,19 +62,19 @@ initialCoordinatesLat = 6.687768;
 initialCoordinatesLon = -1.595859;
 }
 if(goalCoordinates === "Kumasi"){
-goalLocation = "Kumasi";
-goalCoordinatesLat = 6.687768;
-goalCoordinatesLon = -1.595859;
+  goalLocation = "Kumasi";
+  goalCoordinatesLat = 6.687768;
+  goalCoordinatesLon = -1.595859;
 }
 if(initialCoordinates === "Sunyani"){
-sourceLocation = "Sunyani";
-initialCoordinatesLat = 7.331780;
-initialCoordinatesLon = -2.320112;
+  sourceLocation = "Sunyani";
+  initialCoordinatesLat = 7.331780;
+  initialCoordinatesLon = -2.320112;
 }
 if(goalCoordinates === "Sunyani"){
-goalLocation = "Sunyani";
-goalCoordinatesLat = 7.331780;
-goalCoordinatesLon = -2.320112;
+  goalLocation = "Sunyani";
+  goalCoordinatesLat = 7.331780;
+  goalCoordinatesLon = -2.320112;
 }
 if (initialCoordinates === goalCoordinates) {
     alert('Initial and goal coordinates cannot be the same!');
@@ -101,13 +97,6 @@ if (initialCoordinates === goalCoordinates) {
       currentLat: currentLat,
       currentLon: currentLon
     },
-    states: {
-      approved: approved,
-      processed: processed,
-      inTransit: inTransit,
-      delivered: delivered,
-      received: received
-    }
   }).then(() => {
     console.log('Data submitted successfully!');
     trackingForm.reset();

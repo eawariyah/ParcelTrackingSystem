@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
     <link rel="icon" href="https://vipexparcel.com/favicon.ico" />
-    <link rel="stylesheet" href="admin.css" />
+    <link rel="stylesheet" href="manageBusses.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -25,13 +25,13 @@
         <div class="drawer" id="drawer">
           <ul>
             <li><a href="./newUser.html">New User</a></li>
-            <li><a href="./admin.html">Busses</a></li>
+            <li><a href="./manageBusses.html">Manage Busses</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="container">
-      <h2>Parcel Tracking Input</h2>
+      <h2>ADD A NEW BUS</h2>
       <form id="trackingForm">
         <label for="vehicleId">Vehicle ID:</label>
         <!-- <input type="text" id="vehicleId" required /><br /> -->
@@ -70,29 +70,13 @@
         ><br />
 
         <input type="hidden" id="goalCoordinatesInput" required /><br />
-
-        <label for="approved">Approved:</label>
-        <input type="checkbox" id="approved" /><br />
-
-        <label for="processed">Processed:</label>
-        <input type="checkbox" id="processed" /><br />
-
-        <label for="inTransit">In-Transit:</label>
-        <input type="checkbox" id="inTransit" /><br />
-
-        <label for="delivered">Delivered:</label>
-        <input type="checkbox" id="delivered" /><br />
-
-        <label for="received">Received:</label>
-        <input type="checkbox" id="received" /><br />
-
-        <button type="submit">Submit</button>
+        <button type="submit">Add bus</button>
       </form>
     </div>
     <div id="snackbar" style="display: none">Data sent</div>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
-    <script src="admin.js"></script>
+    <script src="manageBusses.js"></script>
     <script>
       function toggleDrawer() {
         var drawer = document.getElementById("drawer");
