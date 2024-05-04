@@ -25,9 +25,9 @@
         <div class="drawer" id="drawer">
           <ul>
             <li><a href="./newUser.html">New User</a></li>
-            <li><a href="./manageBusses.css">Manage Busses</a></li>
-
+            <li><a href="./manageBusses.html">Manage Busses</a></li>
             <li><a href="./addBusses.html">Add Busses</a></li>
+            <li><a href="./addLocations.html">Add Locations</a></li>
           </ul>
         </div>
       </div>
@@ -50,11 +50,7 @@
           list="initialCoordinatesList"
           required
         />
-        <datalist id="initialCoordinatesList">
-          <option value="Accra">Accra</option>
-          <option value="Kumasi">Kumasi</option>
-          <option value="Sunyani">Sunyani</option></datalist
-        ><br />
+        <datalist id="initialCoordinatesList"></datalist><br />
 
         <label for="goalCoordinates">Goal Coordinates:</label>
         <input
@@ -63,11 +59,7 @@
           list="goalCoordinatesList"
           required
         />
-        <datalist id="goalCoordinatesList">
-          <option value="Accra">Accra</option>
-          <option value="Kumasi">Kumasi</option>
-          <option value="Sunyani">Sunyani</option></datalist
-        ><br />
+        <datalist id="goalCoordinatesList"></datalist><br />
 
         <input type="hidden" id="goalCoordinatesInput" required /><br />
         <button type="submit">Add bus</button>
@@ -86,6 +78,40 @@
           drawer.style.display = "block";
         }
       }
+
+      // Function to fetch and populate the datalist options
+      async function populateDatalist() {
+        const initialCoordinatesList = document.getElementById(
+          "initialCoordinatesList"
+        );
+        const goalCoordinatesList = document.getElementById(
+          "goalCoordinatesList"
+        );
+
+        // Fetch locations from Firebase
+        const locationsSnapshot = await firebase
+          .database()
+          .ref("locations")
+          .once("value");
+        const locations = locationsSnapshot.val();
+
+        // Populate initialCoordinatesList
+        for (const location in locations) {
+          const option = document.createElement("option");
+          option.value = location;
+          initialCoordinatesList.appendChild(option);
+        }
+
+        // Populate goalCoordinatesList
+        for (const location in locations) {
+          const option = document.createElement("option");
+          option.value = location;
+          goalCoordinatesList.appendChild(option);
+        }
+      }
+
+      // Call the populateDatalist function when the page loads
+      populateDatalist();
     </script>
   </body>
 </html>
