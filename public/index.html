@@ -1,3 +1,4 @@
+<!-- http://127.0.0.1:5501/public/index.html?uniqueId=eFKGdRfTDs -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +11,6 @@
       rel="stylesheet"
     />
     <link rel="icon" href="https://vipexparcel.com/favicon.ico" />
-    <script src="./index.js"></script>
   </head>
 
   <body>
@@ -43,60 +43,60 @@
       <hr style="margin: 5%" />
       <div class="ChitCode">
         <p class="KeyName">RECEIPT CODE:</p>
-        <h1 class="KeyValue" id="uniqueId">AM6219521E</h1>
+        <h1 class="KeyValue" id="uniqueId">Loading...</h1>
       </div>
       <div class="Container">
         <div class="ItemBoxOne">
           <p>Source</p>
-          <h2 class="left" id="sourceLocation">Accra</h2>
+          <h2 class="left" id="sourceLocation">Loading...</h2>
         </div>
         <div class="ItemBoxTwo">
           <p>Destination</p>
-          <h2 class="right" id="destinationLocation">Kumasi</h2>
+          <h2 class="right" id="destinationLocation">Loading...</h2>
         </div>
       </div>
 
       <div class="Container">
         <div class="ItemBoxOne">
           <p>Receiver</p>
-          <h2 class="right" id="receiverName">Dorcas Awariyah</h2>
+          <h2 class="right" id="receiverName">Loading...</h2>
         </div>
         <div class="ItemBoxTwo">
           <p>Phone</p>
-          <h2 class="left" id="phoneNumber">+233 24 291 4988</h2>
+          <h2 class="left" id="phoneNumber">Loading...</h2>
         </div>
       </div>
 
       <div class="Container">
         <div class="ItemBoxOne">
           <p>Sender</p>
-          <h2 class="right" id="senderName">Edwin Awariyah</h2>
+          <h2 class="right" id="senderName">Loading...</h2>
         </div>
         <div class="ItemBoxTwo">
           <p>Phone</p>
-          <h2 class="left" id="SenderPhoneNumber">+233 55 826 8006</h2>
+          <h2 class="left" id="SenderPhoneNumber">Loading...</h2>
         </div>
       </div>
 
       <div class="Container">
         <div class="ItemBoxOne">
           <p>Packaging</p>
-          <h2 class="left" id="packagingDimensions">1W/EBFG</h2>
+          <h2 class="left" id="packagingDimensions">Loading...</h2>
         </div>
         <div class="ItemBoxTwo">
           <p>Payment</p>
-          <h2 class="right" id="paymentMethod">On delivery</h2>
+          <h2 class="right" id="paymentMethod">Loading...</h2>
         </div>
       </div>
 
       <div class="Container">
         <div class="ItemBoxOne">
           <p>Sent Time</p>
-          <h2 class="left" id="sentTime">4:45 pm</h2>
+          <h2 class="left" id="sentTime">Loading...</h2>
         </div>
         <div class="ItemBoxTwo">
           <p>Sent Date</p>
-          <h2 class="right" id="sentDate">March 7, 2024</h2>
+          <h2 class="right" id="sentDate">Loading...</h2>
         </div>
       </div>
     </div>
@@ -152,59 +152,13 @@
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
-    <script>
+    <script src="./index.js"></script>
+
+    <!-- <script>
       const numSteps = 5;
 
-      // Function to generate stepper items
-      function generateStepperItems(step) {
-        const stepperWrapper = document.getElementById("stepperWrapper");
-        stepperWrapper.innerHTML = ""; // Clear previous content
-
-        for (let i = 1; i <= numSteps; i++) {
-          const stepperItem = document.createElement("div");
-          stepperItem.classList.add("stepper-item");
-          stepperItem.id = `step${i}`;
-          if (i < step) {
-            stepperItem.classList.add("completed");
-          } else if (i === step) {
-            stepperItem.classList.add("active");
-          }
-
-          const stepCounter = document.createElement("div");
-          stepCounter.classList.add("step-counter");
-          stepCounter.textContent = i;
-
-          const stepName = document.createElement("div");
-          stepName.classList.add("step-name");
-          // Set step names as desired
-          switch (i) {
-            case 1:
-              stepName.textContent = "Approved";
-              break;
-            case 2:
-              stepName.textContent = "Processed";
-              break;
-            case 3:
-              stepName.textContent = "Transit";
-              break;
-            case 4:
-              stepName.textContent = "Delivered";
-              break;
-            case 5:
-              stepName.textContent = "Received";
-              break;
-            default:
-              break;
-          }
-
-          stepperItem.appendChild(stepCounter);
-          stepperItem.appendChild(stepName);
-          stepperWrapper.appendChild(stepperItem);
-        }
-      }
-
-      var step = 4; // Steps
+      var step = 4;
       generateStepperItems(step);
-    </script>
+    </script> -->
   </body>
 </html>

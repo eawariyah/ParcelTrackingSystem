@@ -1,3 +1,6 @@
+  const numSteps = 5;
+  const step = 3;
+  generateStepperItems(step);
 const firebaseConfig = {
   apiKey: "AIzaSyBy9PfTUKSklxPDo4Sm8Cr7Q4yQvpDoz-A",
   authDomain: "bustrackingsystem-7f036.firebaseapp.com",
@@ -103,6 +106,52 @@ function displayFirebaseValues() {
 
 setInterval(displayFirebaseValues, 1000);
 
+function generateStepperItems(step) {
+  const stepperWrapper = document.getElementById("stepperWrapper");
+  stepperWrapper.innerHTML = ""; // Clear previous content
+
+  for (let i = 1; i <= numSteps; i++) {
+    const stepperItem = document.createElement("div");
+    stepperItem.classList.add("stepper-item");
+    stepperItem.id = `step${i}`;
+    if (i < step) {
+      stepperItem.classList.add("completed");
+    } else if (i === step) {
+      stepperItem.classList.add("active");
+    }
+
+    const stepCounter = document.createElement("div");
+    stepCounter.classList.add("step-counter");
+    stepCounter.textContent = i;
+
+    const stepName = document.createElement("div");
+    stepName.classList.add("step-name");
+    // Set step names as desired
+    switch (i) {
+      case 1:
+        stepName.textContent = "Approved";
+        break;
+      case 2:
+        stepName.textContent = "Processed";
+        break;
+      case 3:
+        stepName.textContent = "Transit";
+        break;
+      case 4:
+        stepName.textContent = "Delivered";
+        break;
+      case 5:
+        stepName.textContent = "Received";
+        break;
+      default:
+        break;
+    }
+
+    stepperItem.appendChild(stepCounter);
+    stepperItem.appendChild(stepName);
+    stepperWrapper.appendChild(stepperItem);
+  }
+}
 
 function toggleDrawer() {
     var drawer = document.getElementById("drawer");
@@ -113,47 +162,56 @@ function toggleDrawer() {
     }
   }
 
+  const urlParams = new URLSearchParams(window.location.search);
+        
+  // Get the value of the 'uniqueId' parameter
+  const uniqueID = urlParams.get('uniqueId');
+  
+  console.log(uniqueID);
+  
+      async function fetchUserData() {
+        try {
+          const userSnapshot = await database
+            .ref("users/" + uniqueID)
+            .once("value");
+          if (userSnapshot.exists()) {
+            const userData = userSnapshot.val();
 
+            // Update the text content of the elements with the fetched data
+            document.getElementById("uniqueId").textContent =
+            uniqueID;
+            document.getElementById("sourceLocation").textContent =
+              userData.sourceLocation;
+            document.getElementById("destinationLocation").textContent =
+              userData.destinationLocation;
+            document.getElementById("receiverName").textContent =
+              userData.receiverName;
+            document.getElementById("phoneNumber").textContent =
+              userData.phoneNumber;
+            document.getElementById("senderName").textContent =
+              userData.senderName;
+            document.getElementById("SenderPhoneNumber").textContent =
+              userData.SenderPhoneNumber;
+            document.getElementById("packagingDimensions").textContent =
+              userData.packagingDimensions;
+            document.getElementById("paymentMethod").textContent =
+              userData.paymentMethod;
+            document.getElementById("sentTime").textContent = userData.sentTime;
+            document.getElementById("sentDate").textContent = userData.sentDate;
 
-  // Function to retrieve URL parameter
-  function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-  }
+            // Optionally, display the fetched data in a <pre> element for debugging
+            document.getElementById("userDataDisplay").textContent =
+              JSON.stringify(userData, null, 2);
+          } else {
+            document.getElementById("userDataDisplay").textContent =
+              "No data found for the given unique ID.";
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+          document.getElementById("userDataDisplay").textContent =
+            "Error fetching user data. Check the console for more details.";
+        }
+      }
 
-  // Function to update parcel details
-  async function updateParcelDetails(uniqueId) {
-    const parcelSnapshot = await database.ref('users/' + uniqueId).once('value');
-    if (parcelSnapshot.exists()) {
-      const parcelData = parcelSnapshot.val();
-      // Update HTML elements with fetched data
-      document.getElementById('uniqueId').textContent = uniqueId;
-      document.getElementById('sourceLocation').textContent = parcelData.sourceLocation;
-      document.getElementById('destinationLocation').textContent = parcelData.destinationLocation;
-      document.getElementById('receiverName').textContent = parcelData.receiverName;
-      document.getElementById('phoneNumber').textContent = parcelData.phoneNumber;
-      document.getElementById('senderName').textContent = parcelData.senderName;
-      document.getElementById('SenderPhoneNumber').textContent = parcelData.SenderPhoneNumber;
-      document.getElementById('packagingDimensions').textContent = parcelData.packagingDimensions;
-      document.getElementById('paymentMethod').textContent = parcelData.paymentMethod;
-      document.getElementById('sentDate').textContent = parcelData.sentDate;
-      document.getElementById('sentTime').textContent = parcelData.sentTime;
-    } else {
-      console.error('Parcel not found!');
-    }
-  }
-
-  // Get uniqueId from URL and update parcel details
-  const uniqueIdFromUrl = getParameterByName('uniqueId');
-  console.log('uniqueIdFromUrl:', uniqueIdFromUrl);
-  alert('uniqueIdFromUrl:', uniqueIdFromUrl);
-  if (uniqueIdFromUrl) {
-    updateParcelDetails(uniqueIdFromUrl);
-  } else {
-    console.error('No uniqueId found in URL!');
-  }
+      // Call fetchUserData when the page loads
+      window.addEventListener("load", fetchUserData);
