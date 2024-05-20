@@ -113,3 +113,47 @@ function toggleDrawer() {
     }
   }
 
+
+
+  // Function to retrieve URL parameter
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  // Function to update parcel details
+  async function updateParcelDetails(uniqueId) {
+    const parcelSnapshot = await database.ref('users/' + uniqueId).once('value');
+    if (parcelSnapshot.exists()) {
+      const parcelData = parcelSnapshot.val();
+      // Update HTML elements with fetched data
+      document.getElementById('uniqueId').textContent = uniqueId;
+      document.getElementById('sourceLocation').textContent = parcelData.sourceLocation;
+      document.getElementById('destinationLocation').textContent = parcelData.destinationLocation;
+      document.getElementById('receiverName').textContent = parcelData.receiverName;
+      document.getElementById('phoneNumber').textContent = parcelData.phoneNumber;
+      document.getElementById('senderName').textContent = parcelData.senderName;
+      document.getElementById('SenderPhoneNumber').textContent = parcelData.SenderPhoneNumber;
+      document.getElementById('packagingDimensions').textContent = parcelData.packagingDimensions;
+      document.getElementById('paymentMethod').textContent = parcelData.paymentMethod;
+      document.getElementById('sentDate').textContent = parcelData.sentDate;
+      document.getElementById('sentTime').textContent = parcelData.sentTime;
+    } else {
+      console.error('Parcel not found!');
+    }
+  }
+
+  // Get uniqueId from URL and update parcel details
+  const uniqueIdFromUrl = getParameterByName('uniqueId');
+  console.log('uniqueIdFromUrl:', uniqueIdFromUrl);
+  alert('uniqueIdFromUrl:', uniqueIdFromUrl);
+  if (uniqueIdFromUrl) {
+    updateParcelDetails(uniqueIdFromUrl);
+  } else {
+    console.error('No uniqueId found in URL!');
+  }

@@ -43,60 +43,60 @@
       <hr style="margin: 5%" />
       <div class="ChitCode">
         <p class="KeyName">RECEIPT CODE:</p>
-        <h1 class="KeyValue">AM6219521E</h1>
+        <h1 class="KeyValue" id="uniqueId">AM6219521E</h1>
       </div>
       <div class="Container">
         <div class="ItemBoxOne">
           <p>Source</p>
-          <h2 class="left">Accra</h2>
+          <h2 class="left" id="sourceLocation">Accra</h2>
         </div>
         <div class="ItemBoxTwo">
           <p>Destination</p>
-          <h2 class="right">Kumasi</h2>
+          <h2 class="right" id="destinationLocation">Kumasi</h2>
         </div>
       </div>
 
       <div class="Container">
         <div class="ItemBoxOne">
           <p>Receiver</p>
-          <h2 class="right">Dorcas Awariyah</h2>
+          <h2 class="right" id="receiverName">Dorcas Awariyah</h2>
         </div>
         <div class="ItemBoxTwo">
           <p>Phone</p>
-          <h2 class="left">+233 24 291 4988</h2>
+          <h2 class="left" id="phoneNumber">+233 24 291 4988</h2>
         </div>
       </div>
 
       <div class="Container">
         <div class="ItemBoxOne">
           <p>Sender</p>
-          <h2 class="right">Edwin Awariyah</h2>
+          <h2 class="right" id="senderName">Edwin Awariyah</h2>
         </div>
         <div class="ItemBoxTwo">
           <p>Phone</p>
-          <h2 class="left">+233 55 826 8006</h2>
+          <h2 class="left" id="SenderPhoneNumber">+233 55 826 8006</h2>
         </div>
       </div>
 
       <div class="Container">
         <div class="ItemBoxOne">
           <p>Packaging</p>
-          <h2 class="left">1W/EBFG</h2>
+          <h2 class="left" id="packagingDimensions">1W/EBFG</h2>
         </div>
         <div class="ItemBoxTwo">
           <p>Payment</p>
-          <h2 class="right">On delivery</h2>
+          <h2 class="right" id="paymentMethod">On delivery</h2>
         </div>
       </div>
 
       <div class="Container">
         <div class="ItemBoxOne">
           <p>Sent Time</p>
-          <h2 class="left">4:45 pm</h2>
+          <h2 class="left" id="sentTime">4:45 pm</h2>
         </div>
         <div class="ItemBoxTwo">
           <p>Sent Date</p>
-          <h2 class="right">March 7, 2024</h2>
+          <h2 class="right" id="sentDate">March 7, 2024</h2>
         </div>
       </div>
     </div>
@@ -150,6 +150,8 @@
         </div>
       </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
     <script>
       const numSteps = 5;
 
@@ -201,8 +203,7 @@
         }
       }
 
-      // Call the function with the desired step
-      var step = 4; // For example, set the second step
+      var step = 4; // Steps
       generateStepperItems(step);
     </script>
   </body>

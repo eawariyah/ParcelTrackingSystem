@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "firebase": "^10.12.0",
     "twilio": "^4.22.0"
   }
 }

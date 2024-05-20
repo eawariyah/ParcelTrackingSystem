@@ -17,9 +17,9 @@ const trackingForm = document.getElementById('trackingForm');
 const snackbar = document.getElementById('snackbar');
 
 function showSnackbar() {
-  snackbar.style.display = 'block'; // Show the snackbar
+  snackbar.style.display = 'block';
   setTimeout(() => {
-    snackbar.style.display = 'none'; // Hide the snackbar after 3 seconds
+    snackbar.style.display = 'none';
   }, 3000);
 }
 
@@ -36,8 +36,11 @@ trackingForm.addEventListener('submit', async (e) => {
   
   const initialCoordinatesName = document.getElementById('initialCoordinatesInput').value;
   const goalCoordinatesName = document.getElementById('goalCoordinatesInput').value;
-  const currentLat = 5.76099;
-  const currentLon = -0.21971;
+  const currentLat = 0;
+  const currentLon = 0;
+  const currentSpeed = 0;
+  const CurrentSatelliteNumber = 0;
+  const currentAltitude = 0;
 
   // Fetch initial coordinates from Firebase
   const initialCoordinatesSnapshot = await database.ref('locations/' + initialCoordinatesName).once('value');
@@ -66,7 +69,11 @@ trackingForm.addEventListener('submit', async (e) => {
     },
     currentCoordinates: {
       currentLat: currentLat,
-      currentLon: currentLon
+      currentLon: currentLon,
+      currentSpeed: currentSpeed,
+      CurrentSatelliteNumber: CurrentSatelliteNumber,
+      currentAltitude: currentAltitude,
+      
     },
   }).then(() => {
     console.log('Data submitted successfully!');
