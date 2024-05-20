@@ -1,6 +1,10 @@
-  const numSteps = 5;
-  const step = 3;
-  generateStepperItems(step);
+  var counter = 0;
+  var approvedState = false;
+  var processedState = false;
+  var transitState = false;
+  var deliveredState = false;
+  var receivedState = false;
+
 const firebaseConfig = {
   apiKey: "AIzaSyBy9PfTUKSklxPDo4Sm8Cr7Q4yQvpDoz-A",
   authDomain: "bustrackingsystem-7f036.firebaseapp.com",
@@ -163,12 +167,13 @@ function toggleDrawer() {
   }
 
   const urlParams = new URLSearchParams(window.location.search);
+  
         
   // Get the value of the 'uniqueId' parameter
   const uniqueID = urlParams.get('uniqueId');
-  
-  console.log(uniqueID);
-  
+  if (uniqueID === null) {
+    alert('Use the link in text message!');
+  }  
       async function fetchUserData() {
         try {
           const userSnapshot = await database
@@ -198,6 +203,34 @@ function toggleDrawer() {
               userData.paymentMethod;
             document.getElementById("sentTime").textContent = userData.sentTime;
             document.getElementById("sentDate").textContent = userData.sentDate;
+            approvedState = userData.approvedState;
+            processedState = userData.processedState;
+            transitState = userData.transitState;
+            deliveredState = userData.deliveredState;
+            receivedState = userData.receivedState;
+
+
+            if (approvedState === true) {
+              counter = counter + 1;
+      
+            }
+            if (processedState === true) {
+              counter = counter + 1;
+            }
+            if (transitState === true) {
+              counter = counter + 1;
+            }
+            if (deliveredState === true) {
+              counter = counter + 1;
+            }
+            if (receivedState === true) {
+              counter = counter + 1;
+            }
+            const step = 3;
+            // alert(counter);
+      
+            
+            generateStepperItems(counter);
 
             // Optionally, display the fetched data in a <pre> element for debugging
             document.getElementById("userDataDisplay").textContent =
@@ -213,5 +246,13 @@ function toggleDrawer() {
         }
       }
 
+      
+
+
+      
+      // generateStepperItems(step);
       // Call fetchUserData when the page loads
       window.addEventListener("load", fetchUserData);
+      
+      const numSteps = 5;
+ 

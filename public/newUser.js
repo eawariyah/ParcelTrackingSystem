@@ -82,6 +82,11 @@ updateDatalistOptions();
     const paymentMethod = document.getElementById('paymentMethod').value;
     const sentDate = document.getElementById('sentDate').value;
     const sentTime = document.getElementById('sentTime').value;
+    const approvedState = false;
+    const processedState = false;
+    const transitState = false;
+    const deliveredState = false;
+    const receivedState = false;
   
     const uniqueId = generateUniqueId(10);
   
@@ -96,7 +101,12 @@ updateDatalistOptions();
       packagingDimensions: packagingDimensions,
       paymentMethod: paymentMethod,
       sentDate: sentDate,
-      sentTime: sentTime
+      sentTime: sentTime,
+      approvedState: approvedState,
+      processedState: processedState,
+      transitState: transitState,
+      deliveredState: deliveredState,
+      receivedState: receivedState,
     }).then(() => {
       console.log('User registered successfully!');
       userRegistrationForm.reset();
