@@ -14,11 +14,11 @@
     <style>
       .parcel-tracker {
         text-align: center;
-        padding: 20px;
+        padding: 50px 50px 70px 50px;
       }
 
       .tracker-title {
-        font-size: 2em;
+        font-size: 3em;
         margin-bottom: 20px;
       }
 
@@ -27,12 +27,15 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        padding-top: 20px;
       }
 
       .progress-container {
         display: flex;
         align-items: center;
-        gap: 10px;
+        /* gap: 10px; */
+        justify-content: space-between;
+        width: 400px;
       }
 
       .info-container {
@@ -69,7 +72,7 @@
 
       .progress-bar-wrapper {
         position: relative;
-        width: 200px;
+        width: 300px;
       }
 
       .progress-markers {
@@ -84,6 +87,20 @@
         width: 2px;
         height: 10px;
         background-color: #333;
+      }
+      .percentage-markers {
+        position: absolute;
+        top: -30px;
+        left: -2.5%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .percentageValue {
+        width: 2px;
+        height: 10px;
+        /* background-color: #333; */
       }
 
       progress {
@@ -129,14 +146,25 @@
         <button class="toggle-button" onclick="toggleDrawer()">Services</button>
         <div class="drawer" id="drawer">
           <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./trackParcel.html">Track Bus</a></li>
-            <li><a href="./FindParcel.html">Find other parcel</a></li>
-            <li><a href="./PickUpLocations.html">Pick Up Locations</a></li>
+            <li><a onclick="homePage()" style="cursor: pointer">Home</a></li>
+            <li>
+              <a onclick="trackBus()" style="cursor: pointer">Track Bus</a>
+            </li>
+            <li>
+              <a onclick="findParcel()" style="cursor: pointer"
+                >Find other parcel</a
+              >
+            </li>
+            <li>
+              <a onclick="PickUpLocations()" style="cursor: pointer"
+                >Pick Up Locations</a
+              >
+            </li>
           </ul>
         </div>
       </div>
     </div>
+
     <div class="parcel-tracker">
       <h1 class="tracker-title">Parcel Tracker</h1>
       <div class="tracker-content">
@@ -149,6 +177,12 @@
               <div class="marker" style="left: 40%"></div>
               <div class="marker" style="left: 60%"></div>
               <div class="marker" style="left: 80%"></div>
+            </div>
+            <div class="percentage-markers">
+              <div class="percentageValue" style="left: 20%">20</div>
+              <div class="percentageValue" style="left: 40%">40</div>
+              <div class="percentageValue" style="left: 60%">60</div>
+              <div class="percentageValue" style="left: 80%">80</div>
             </div>
           </div>
         </div>

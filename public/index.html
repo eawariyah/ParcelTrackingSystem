@@ -23,10 +23,20 @@
         <button class="toggle-button" onclick="toggleDrawer()">Services</button>
         <div class="drawer" id="drawer">
           <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./trackParcel.html">Track Bus</a></li>
-            <li><a href="./FindParcel.html">Find other parcel</a></li>
-            <li><a href="./PickUpLocations.html">Pick Up Locations</a></li>
+            <li><a onclick="homePage()" style="cursor: pointer">Home</a></li>
+            <li>
+              <a onclick="trackBus()" style="cursor: pointer">Track Bus</a>
+            </li>
+            <li>
+              <a onclick="findParcel()" style="cursor: pointer"
+                >Find other parcel</a
+              >
+            </li>
+            <li>
+              <a onclick="PickUpLocations()" style="cursor: pointer"
+                >Pick Up Locations</a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -35,8 +45,6 @@
     <div class="SubHeading">
       <h2>Track Your Parcel</h2>
     </div>
-
-    <div class="stepper-wrapper" id="stepperWrapper"></div>
 
     <div class="ParcelContent">
       <h1 class="ProgressBanner">Progress: In Transit!</h1>

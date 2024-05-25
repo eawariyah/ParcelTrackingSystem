@@ -10,7 +10,6 @@
       rel="stylesheet"
     />
     <link rel="icon" href="https://vipexparcel.com/favicon.ico" />
-    <script src="./index.js"></script>
     <style>
       .ContainerFrame {
         display: flex;
@@ -98,10 +97,20 @@
         <button class="toggle-button" onclick="toggleDrawer()">Services</button>
         <div class="drawer" id="drawer">
           <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./trackParcel.html">Track Bus</a></li>
-            <li><a href="./FindParcel.html">Find other parcel</a></li>
-            <li><a href="./PickUpLocations.html">Pick Up Locations</a></li>
+            <li><a onclick="homePage()" style="cursor: pointer">Home</a></li>
+            <li>
+              <a onclick="trackBus()" style="cursor: pointer">Track Bus</a>
+            </li>
+            <li>
+              <a onclick="findParcel()" style="cursor: pointer"
+                >Find other parcel</a
+              >
+            </li>
+            <li>
+              <a onclick="PickUpLocations()" style="cursor: pointer"
+                >Pick Up Locations</a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -189,6 +198,9 @@
         </div>
       </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script src="./index.js"></script>
     <script>
       function toggleDrawer() {
         var drawer = document.getElementById("drawer");
