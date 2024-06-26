@@ -1,0 +1,174 @@
+<!-- http://127.0.0.1:5501/public/index.html?uniqueId=eFKGdRfTDs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vipxparcel</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="https://vipexparcel.com/favicon.ico" />
+  </head>
+
+  <body>
+    <div class="header">
+      <a href="./index.html" title="#" class="flex"
+        ><img class="VipLogo" src="./download.png" alt="VIP Bus Tickets image"
+      /></a>
+      <h1 class="home">Vipex Co LTD</h1>
+      <div class="drawer-container">
+        <button class="toggle-button" onclick="toggleDrawer()">Services</button>
+        <div class="drawer" id="drawer">
+          <ul>
+            <li><a onclick="homePage()" style="cursor: pointer">Home</a></li>
+            <li>
+              <a onclick="trackBus()" style="cursor: pointer">Track Bus</a>
+            </li>
+            <li>
+              <a onclick="findParcel()" style="cursor: pointer"
+                >Find other parcel</a
+              >
+            </li>
+            <li>
+              <a onclick="PickUpLocations()" style="cursor: pointer"
+                >Pick Up Locations</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="SubHeading">
+      <h2>Track Your Parcel</h2>
+    </div>
+
+    <div class="stepper-wrapper" id="stepperWrapper"></div>
+
+    <div class="ParcelContent">
+      <h1 class="ProgressBanner">Progress: In Transit!</h1>
+      <hr style="margin: 5%" />
+      <div class="ChitCode">
+        <p class="KeyName">RECEIPT CODE:</p>
+        <h1 class="KeyValue" id="uniqueId">Loading...</h1>
+      </div>
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Source</p>
+          <h2 class="left" id="sourceLocation">Loading...</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Destination</p>
+          <h2 class="right" id="destinationLocation">Loading...</h2>
+        </div>
+      </div>
+
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Receiver</p>
+          <h2 class="right" id="receiverName">Loading...</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Phone</p>
+          <h2 class="left" id="phoneNumber">Loading...</h2>
+        </div>
+      </div>
+
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Sender</p>
+          <h2 class="right" id="senderName">Loading...</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Phone</p>
+          <h2 class="left" id="SenderPhoneNumber">Loading...</h2>
+        </div>
+      </div>
+
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Packaging</p>
+          <h2 class="left" id="packagingDimensions">Loading...</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Payment</p>
+          <h2 class="right" id="paymentMethod">Loading...</h2>
+        </div>
+      </div>
+
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Sent Time</p>
+          <h2 class="left" id="sentTime">Loading...</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Sent Date</p>
+          <h2 class="right" id="sentDate">Loading...</h2>
+        </div>
+      </div>
+    </div>
+    <div class="SnackBar">
+      <h1 class="TitleTitle">VIPEX CO LTD</h1>
+      <p class="TextStuff">
+        VIPex Co. Ltd is a Courier Service Company duly registered in 2014 and
+        regulated by the Postal and Courier Services Regulatory Commission of
+        Ghana. The company is currently the fastest, most reliable, cost
+        effective and efficient means of sending and receiving parcels across
+        several locations in Ghana.
+      </p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/myvipbusgh/" target="_blank"
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png"
+            alt="Facebook"
+        /></a>
+        <a href="https://www.instagram.com/myvipbusgh/" target="_blank"
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png"
+            alt="Instagram"
+        /></a>
+        <a href="https://twitter.com/vip_busgh?lang=en" target="_blank"
+          ><img
+            src="https://static.dezeen.com/uploads/2023/07/x-logo-twitter-elon-musk_dezeen_2364_col_0-1.jpg"
+            alt="Twitter"
+        /></a>
+      </div>
+      <h1 class="ContactUs">Contact Us</h1>
+      <div class="PriorLocations">
+        <div class="Locations">
+          <h3 class="LocationTitle">Anloga Junction - Kumasi</h3>
+          <p class="TextStuff">Vipex Parcels Offce (Yaa Ataah Arcade)</p>
+          <a class="CallLink" href="tel:+233241234567">Phone: +233241234567</a>
+        </div>
+        <div class="Locations">
+          <h3 class="LocationTitle">Circle - Accra</h3>
+          <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
+          <a class="CallLink" href="tel:+233204353512">Phone: +233204353512</a>
+        </div>
+        <div class="Locations">
+          <h3 class="LocationTitle">Asafo - Kumasi</h3>
+          <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
+          <a class="CallLink" href="tel:+233204353513">Phone: +233204353513</a>
+        </div>
+        <div class="Locations">
+          <h3 class="LocationTitle">Sunyani</h3>
+          <p class="TextStuff">VIP JEOIJN Bus Terminal</p>
+          <a class="CallLink" href="tel:+233540305280">Phone: +233540305280</a>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script src="./index.js"></script>
+
+    <!-- <script>
+      const numSteps = 5;
+
+      var step = 4;
+      generateStepperItems(step);
+    </script> -->
+  </body>
+</html>

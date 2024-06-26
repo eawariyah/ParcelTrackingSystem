@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Buses</title>
+    <link rel="stylesheet" href="manageBusses.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <a href="./index.html" title="#" class="flex">
+        <img class="VipLogo" src="./download.png" alt="VIP Bus Tickets image" />
+      </a>
+      <h1 class="home">Vipex Co LTD</h1>
+      <div class="drawer-container">
+        <button class="toggle-button" onclick="toggleDrawer()">Services</button>
+        <div class="drawer" id="drawer">
+          <ul>
+            <li><a href="./newUser.html">New User</a></li>
+            <li><a href="./manageBusses.html">Manage Busses</a></li>
+            <li><a href="./addBusses.html">Add Busses</a></li>
+            <li><a href="./addLocations.html">Add Locations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h2>Manage Buses</h2>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by Vehicle ID"
+        onkeyup="searchBuses()"
+      />
+
+      <table id="busTable">
+        <thead>
+          <tr>
+            <th>Vehicle ID</th>
+            <th>Initial Coordinates</th>
+            <th>Goal Coordinates</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="busList"></tbody>
+      </table>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script src="manageBusses.js"></script>
+    <script>
+      function toggleDrawer() {
+        var drawer = document.getElementById("drawer");
+        if (drawer.style.display === "block") {
+          drawer.style.display = "none";
+        } else {
+          drawer.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>

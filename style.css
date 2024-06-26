@@ -1,0 +1,345 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins'; 
+    background-color: #1E1E1E;
+
+    color: white;
+    
+}
+.header{
+    padding: 5px;
+    background-color: rgb(0, 0, 0);
+    height: 44px;
+    display: flex;
+
+}
+.VipLogo{
+    width: 40px;
+    height: 40px;
+    padding-right: 5px;
+
+}
+.ServicesArrow{
+  display: flex;
+  padding-top: 15px;
+  width: 20px;
+  height: 20px;
+  padding-right: 5px;
+  color: #4bb543;
+
+
+}
+.Services{
+    display: flex;
+    align-items: end;
+    color: #4bb543;
+    
+    justify-content: end;
+    padding: 5px;
+    width: 100%;
+  /* color: white; */
+}
+.SubHeading{
+  padding: 2%;
+  display: flex;
+  flex-direction: row;
+}
+.TrackBusButton{
+  
+    background-color: #4bb543;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 20px;
+    height: 50px;
+
+}
+.home{
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    width: 100%;
+}
+
+.ParcelContent{
+    padding: 2%;
+    background-color: #25282E; 
+    border-radius: 10px;  
+    margin: 2%;
+    border: white 1px solid;
+
+}
+.ProgressBanner{
+  display: flex;
+  justify-content: center;
+}
+.ChitCode{
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #737579;
+}
+.KeyName{
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+}
+.KeyValue{
+  display: flex;
+  justify-content: center;
+  margin-top: -10px;
+  color: white;
+  /* font-size: 18px; */
+}
+.Container{
+  display: flex;
+  flex-direction: row;
+
+}
+.ItemBoxOne{
+  width: 50%;
+  height: 5%;
+  border-width: 1px;
+  border-color: white;
+  border-style: solid;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 0px 10px 0px 10px;
+  color: #737579;
+}
+.right{
+  font-size: 15px;
+  color: white;
+}
+.left{
+  font-size: 15px;
+  color: white;
+}
+.ItemBoxTwo{
+  width: 50%;
+  height: 5%;
+  border-width: 1px;
+  border-color: white;
+  border-style: solid;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 0px 10px 0px 10px;
+  color: #737579;
+
+
+}
+.SameRow{
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+.stepper-wrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    color: white;
+  }
+  .stepper-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+  
+  .stepper-item::before {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: -50%;
+    z-index: 2;
+  }
+  
+  .stepper-item::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 2;
+  }
+  
+  .stepper-item .step-counter {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: black;
+    margin-bottom: 6px;
+  }
+  
+  .stepper-item.active {
+    font-weight: bold;
+  }
+  
+  .stepper-item.completed .step-counter {
+    /* background-color: #4bb543; */
+    background-color: #ce1b28;
+
+  }
+  
+  .stepper-item.completed::after {
+    position: absolute;
+    content: "";
+    /* border-bottom: 2px solid #4bb543; */
+    border-bottom: 2px solid #ce1b28;
+
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 3;
+  }
+  
+  .stepper-item:first-child::before {
+    content: none;
+  }
+  .stepper-item:last-child::after {
+    content: none;
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social-icons a {
+    margin-right: 10px;
+  }
+  
+  .social-icons img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: solid 2px #fff;
+  }
+
+  .SnackBar{
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    background-color: #000000;
+    /* color: rgb(0, 0, 0); */
+    padding: 10px;
+    /* border-radius: 10px; */
+    /* margin: 10px; */
+  }
+  .TitleTitle{
+    color:#dc2626
+  }
+  .ContactUs{
+    color:#ffffff
+  }
+  .PriorLocations{
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .Locations{
+    padding-top: 10px;
+  }
+  .LocationTitle{
+    color:#ffffff
+  }
+  .CallLink{
+    color: #ffffff;
+  }
+  .TextStuff{
+    color: #737579;
+  }
+
+  /* .drawer-container {
+    display: flex;
+    align-items: end;
+    color: #4bb543;
+    
+    justify-content: end;
+    padding: 5px;
+    width: 100%;
+  } */
+
+  .drawer {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    transition: transform 0.3s ease;
+    z-index: 100000;
+    display: none;
+
+    
+  }
+
+  .drawer ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .drawer ul li {
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+
+  .drawer ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .toggle-button {
+    /* position: absolute; */
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+
+    background-color: #b54343;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 2px;
+    cursor: pointer;
+
+  }
+
+  
+  .toggle-button:hover {
+    background-color: #555;
+  }
+  

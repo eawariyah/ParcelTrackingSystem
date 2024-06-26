@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New User</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="https://vipexparcel.com/favicon.ico" />
+    <link rel="stylesheet" href="newUser.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <a href="./index.html" title="#" class="flex"
+        ><img class="VipLogo" src="./download.png" alt="VIP Bus Tickets image"
+      /></a>
+      <h1 class="home">Vipex Co LTD</h1>
+      <div class="drawer-container">
+        <button class="toggle-button" onclick="toggleDrawer()">Services</button>
+        <div class="drawer" id="drawer">
+          <ul>
+            <li><a href="./newUser.html">New User</a></li>
+            <li><a href="./manageBusses.html">Manage Busses</a></li>
+            <li><a href="./addBusses.html">Add Busses</a></li>
+            <li><a href="./addLocations.html">Add Locations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h2>User Registration</h2>
+      <form id="userRegistrationForm">
+        <label for="sourceLocation">Source Location:</label>
+        <input
+          type="text"
+          id="sourceLocation"
+          list="sourceLocationList"
+          required
+        />
+        <datalist id="sourceLocationList">
+          <!-- <option value="Accra">Accra</option>
+          <option value="Kumasi">Kumasi</option>
+          <option value="Sunyani">Sunyani</option> --></datalist
+        ><br />
+
+        <label for="destinationLocation">Destination Location:</label>
+        <input
+          type="text"
+          id="destinationLocation"
+          list="destinationLocationList"
+          required
+        />
+        <datalist id="destinationLocationList">
+          <!-- <option value="Accra">Accra</option>
+          <option value="Kumasi">Kumasi</option>
+          <option value="Sunyani">Sunyani</option> --></datalist
+        ><br />
+
+        <label for="vehicleId">Choose Bus:</label>
+
+        <input type="text" id="vehicleId" list="VehicleIdList" required />
+        <datalist id="VehicleIdList">
+          <!-- <option value="GX-4671-18">GX-4671-18</option>
+          <option value="GV-590-22">GV-590-22</option>
+          <option value="WR-376-24">WR-376-24</option> --></datalist
+        ><br />
+
+        <label for="senderName">Sender Name:</label>
+        <input type="text" id="senderName" required /><br />
+
+        <label for="SenderPhoneNumber">Sender Phone Number:</label>
+        <input type="tel" id="SenderPhoneNumber" required /><br />
+
+        <label for="receiverName">Receiver Name:</label>
+        <input type="text" id="receiverName" required /><br />
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" required /><br />
+
+        <label for="packagingDimensions">Packaging Dimensions:</label>
+
+        <select id="packagingDimensions" required>
+          <option value="envelope">Envelope</option>
+          <option value="box">Box</option></select
+        ><br />
+
+        <label for="paymentMethod">Payment Method:</label>
+        <select id="paymentMethod" required>
+          <option value="onDelivery">On Delivery</option>
+          <option value="prepaid">Prepaid</option></select
+        ><br />
+
+        <label for="sentDate">Sent Date:</label>
+        <input type="date" id="sentDate" required /><br />
+
+        <label for="sentTime">Sent Time:</label>
+        <input type="time" id="sentTime" required /><br />
+
+        <button type="submit">Register User</button>
+      </form>
+    </div>
+
+    <div id="snackbar" class="hide">User Registered Successfully!</div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script src="newUser.js"></script>
+    <script>
+      function toggleDrawer() {
+        var drawer = document.getElementById("drawer");
+        if (drawer.style.display === "block") {
+          drawer.style.display = "none";
+        } else {
+          drawer.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>

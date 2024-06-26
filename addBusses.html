@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New User</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="https://vipexparcel.com/favicon.ico" />
+    <link rel="stylesheet" href="addBusses.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <a href="./index.html" title="#" class="flex"
+        ><img class="VipLogo" src="./download.png" alt="VIP Bus Tickets image"
+      /></a>
+      <h1 class="home">Vipex Co LTD</h1>
+      <div class="drawer-container">
+        <button class="toggle-button" onclick="toggleDrawer()">Services</button>
+        <div class="drawer" id="drawer">
+          <ul>
+            <li><a href="./newUser.html">New User</a></li>
+            <li><a href="./manageBusses.html">Manage Busses</a></li>
+            <li><a href="./addBusses.html">Add Busses</a></li>
+            <li><a href="./addLocations.html">Add Locations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h2>ADD A NEW BUS</h2>
+      <form id="trackingForm">
+        <label for="vehicleId">Vehicle ID:</label>
+        <input type="text" id="vehicleId" list="VehicleIdList" required />
+        <datalist id="VehicleIdList">
+          <option value="GX-4671-18">GX-4671-18</option>
+          <option value="GV-590-22">GV-590-22</option>
+          <option value="WR-376-24">WR-376-24</option></datalist
+        ><br />
+
+        <label for="initialCoordinates">Initial Coordinates:</label>
+        <input
+          type="text"
+          id="initialCoordinatesInput"
+          list="initialCoordinatesList"
+          required
+        />
+        <datalist id="initialCoordinatesList"></datalist><br />
+
+        <label for="goalCoordinates">Goal Coordinates:</label>
+        <input
+          type="text"
+          id="goalCoordinatesInput"
+          list="goalCoordinatesList"
+          required
+        />
+        <datalist id="goalCoordinatesList"></datalist><br />
+
+        <input type="hidden" id="goalCoordinatesInput" required /><br />
+        <button type="submit">Add bus</button>
+      </form>
+    </div>
+    <div id="snackbar" style="display: none">Data sent</div>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script src="addBusses.js"></script>
+    <script>
+      function toggleDrawer() {
+        var drawer = document.getElementById("drawer");
+        if (drawer.style.display === "block") {
+          drawer.style.display = "none";
+        } else {
+          drawer.style.display = "block";
+        }
+      }
+
+      // Function to fetch and populate the datalist options
+      async function populateDatalist() {
+        const initialCoordinatesList = document.getElementById(
+          "initialCoordinatesList"
+        );
+        const goalCoordinatesList = document.getElementById(
+          "goalCoordinatesList"
+        );
+
+        // Fetch locations from Firebase
+        const locationsSnapshot = await firebase
+          .database()
+          .ref("locations")
+          .once("value");
+        const locations = locationsSnapshot.val();
+
+        // Populate initialCoordinatesList
+        for (const location in locations) {
+          const option = document.createElement("option");
+          option.value = location;
+          initialCoordinatesList.appendChild(option);
+        }
+
+        // Populate goalCoordinatesList
+        for (const location in locations) {
+          const option = document.createElement("option");
+          option.value = location;
+          goalCoordinatesList.appendChild(option);
+        }
+      }
+
+      // Call the populateDatalist function when the page loads
+      populateDatalist();
+    </script>
+  </body>
+</html>

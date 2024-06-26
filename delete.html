@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Data Fetcher</title>
+  </head>
+  <body>
+    <h1 id="currentLat">Current Latitude</h1>
+    <h1 id="currentLon">Current Longitude</h1>
+    <h1 id="initialCoordinatesLat">Source Latitude</h1>
+    <h1 id="initialCoordinatesLon">Source Longitude</h1>
+    <h1 id="goalCoordinatesLat">Goal Latitude</h1>
+    <h1 id="goalCoordinatesLon">Goal Longitude</h1>
+    <div class="ParcelContent">
+      <hr style="margin: 5%" />
+      <div class="ChitCode">
+        <p class="KeyName">RECEIPT CODE:</p>
+        <h1 class="KeyValue" id="uniqueId">AM6219521E</h1>
+      </div>
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Source</p>
+          <h2 class="left" id="sourceLocation">Accra</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Destination</p>
+          <h2 class="right" id="destinationLocation">Kumasi</h2>
+        </div>
+      </div>
+
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Receiver</p>
+          <h2 class="right" id="receiverName">Dorcas Awariyah</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Phone</p>
+          <h2 class="left" id="phoneNumber">+233 24 291 4988</h2>
+        </div>
+      </div>
+
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Sender</p>
+          <h2 class="right" id="senderName">Edwin Awariyah</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Phone</p>
+          <h2 class="left" id="SenderPhoneNumber">+233 55 826 8006</h2>
+        </div>
+      </div>
+
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Packaging</p>
+          <h2 class="left" id="packagingDimensions">1W/EBFG</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Payment</p>
+          <h2 class="right" id="paymentMethod">On delivery</h2>
+        </div>
+      </div>
+
+      <div class="Container">
+        <div class="ItemBoxOne">
+          <p>Sent Time</p>
+          <h2 class="left" id="sentTime">4:45 pm</h2>
+        </div>
+        <div class="ItemBoxTwo">
+          <p>Sent Date</p>
+          <h2 class="right" id="sentDate">March 7, 2024</h2>
+        </div>
+      </div>
+    </div>
+    <pre id="userDataDisplay"></pre>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBy9PfTUKSklxPDo4Sm8Cr7Q4yQvpDoz-A",
+        authDomain: "bustrackingsystem-7f036.firebaseapp.com",
+        databaseURL:
+          "https://bustrackingsystem-7f036-default-rtdb.firebaseio.com",
+        projectId: "bustrackingsystem-7f036",
+        storageBucket: "bustrackingsystem-7f036.appspot.com",
+        messagingSenderId: "226831139838",
+        appId: "1:226831139838:web:9fd76bb79423b0fc23f6af",
+        measurementId: "G-S72Z6K6WVQ",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+
+      const uniqueID = "eFKGdRfTDs";
+
+      async function fetchUserData() {
+        try {
+          const userSnapshot = await database
+            .ref("users/" + uniqueID)
+            .once("value");
+          if (userSnapshot.exists()) {
+            const userData = userSnapshot.val();
+            const vehicleId = userData.vehicleId;
+
+            // Fetch bus data using vehicleId
+            fetchBusData(vehicleId);
+
+            // Update the text content of the elements with the fetched user data
+            document.getElementById("uniqueId").textContent =
+              userData.vehicleId;
+            document.getElementById("sourceLocation").textContent =
+              userData.sourceLocation;
+            document.getElementById("destinationLocation").textContent =
+              userData.destinationLocation;
+            document.getElementById("receiverName").textContent =
+              userData.receiverName;
+            document.getElementById("phoneNumber").textContent =
+              userData.phoneNumber;
+            document.getElementById("senderName").textContent =
+              userData.senderName;
+            document.getElementById("SenderPhoneNumber").textContent =
+              userData.SenderPhoneNumber;
+            document.getElementById("packagingDimensions").textContent =
+              userData.packagingDimensions;
+            document.getElementById("paymentMethod").textContent =
+              userData.paymentMethod;
+            document.getElementById("sentTime").textContent = userData.sentTime;
+            document.getElementById("sentDate").textContent = userData.sentDate;
+          } else {
+            document.getElementById("userDataDisplay").textContent =
+              "No data found for the given unique ID.";
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+          document.getElementById("userDataDisplay").textContent =
+            "Error fetching user data. Check the console for more details.";
+        }
+      }
+
+      async function fetchBusData(vehicleId) {
+        try {
+          const busSnapshot = await database
+            .ref("busses/" + vehicleId)
+            .once("value");
+          if (busSnapshot.exists()) {
+            const busData = busSnapshot.val();
+
+            // Update the text content of the elements with the fetched bus data
+            document.getElementById("currentLat").textContent =
+              busData.currentCoordinates.currentLat;
+            document.getElementById("currentLon").textContent =
+              busData.currentCoordinates.currentLon;
+            document.getElementById("initialCoordinatesLat").textContent =
+              busData.initialCoordinates.initialCoordinatesLat;
+            document.getElementById("initialCoordinatesLon").textContent =
+              busData.initialCoordinates.initialCoordinatesLon;
+            document.getElementById("goalCoordinatesLat").textContent =
+              busData.goalCoordinates.goalCoordinatesLat;
+            document.getElementById("goalCoordinatesLon").textContent =
+              busData.goalCoordinates.goalCoordinatesLon;
+
+            // Optionally, display the fetched bus data in a <pre> element for debugging
+            document.getElementById("userDataDisplay").textContent =
+              JSON.stringify(busData, null, 2);
+          } else {
+            document.getElementById("userDataDisplay").textContent =
+              "No bus data found for the given vehicle ID.";
+          }
+        } catch (error) {
+          console.error("Error fetching bus data:", error);
+          document.getElementById("userDataDisplay").textContent =
+            "Error fetching bus data. Check the console for more details.";
+        }
+      }
+
+      // Call fetchUserData when the page loads
+      window.addEventListener("load", () => {
+        fetchUserData();
+
+        // Refresh bus data every second
+        setInterval(async () => {
+          const userSnapshot = await database
+            .ref("users/" + uniqueID)
+            .once("value");
+          if (userSnapshot.exists()) {
+            const userData = userSnapshot.val();
+            const vehicleId = userData.vehicleId;
+            fetchBusData(vehicleId);
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
